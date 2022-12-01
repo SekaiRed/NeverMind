@@ -1,0 +1,291 @@
+{
+    "automappingRulesFile": "",
+    "commands": [
+    ],
+    "extensionsPath": "extensions",
+    "folders": [
+        "."
+    ],
+    "propertyTypes": [
+        {
+            "color": "#ffff55ff",
+            "id": 6,
+            "members": [
+                {
+                    "name": "actorAfter",
+                    "type": "int",
+                    "value": 0
+                }
+            ],
+            "name": "ActorAfter",
+            "type": "class",
+            "useAs": [
+                "layer"
+            ]
+        },
+        {
+            "id": 12,
+            "name": "Direction",
+            "storageType": "int",
+            "type": "enum",
+            "values": [
+                "UP",
+                "DOWN",
+                "LEFT",
+                "RIGHT"
+            ],
+            "valuesAsFlags": false
+        },
+        {
+            "color": "#ffff0000",
+            "id": 2,
+            "members": [
+                {
+                    "name": "encounter_id",
+                    "type": "int",
+                    "value": 0
+                },
+                {
+                    "name": "filename",
+                    "type": "string",
+                    "value": ""
+                },
+                {
+                    "name": "u",
+                    "type": "int",
+                    "value": 0
+                },
+                {
+                    "name": "v",
+                    "type": "int",
+                    "value": 0
+                }
+            ],
+            "name": "Enemy",
+            "type": "class",
+            "useAs": [
+                "object"
+            ]
+        },
+        {
+            "color": "#ff55aa00",
+            "id": 7,
+            "members": [
+                {
+                    "name": "entrance_id",
+                    "type": "int",
+                    "value": 0
+                },
+                {
+                    "name": "fade_idle",
+                    "type": "int",
+                    "value": 0
+                },
+                {
+                    "name": "fade_out",
+                    "type": "int",
+                    "value": 6
+                },
+                {
+                    "name": "map_name",
+                    "type": "string",
+                    "value": ""
+                },
+                {
+                    "name": "sound",
+                    "type": "string",
+                    "value": ""
+                },
+                {
+                    "name": "transition",
+                    "propertyType": "ExitTransition",
+                    "type": "string",
+                    "value": "FadeBlack"
+                },
+                {
+                    "name": "type",
+                    "propertyType": "ExitType",
+                    "type": "string",
+                    "value": "Click"
+                }
+            ],
+            "name": "Exit",
+            "type": "class",
+            "useAs": [
+                "object"
+            ]
+        },
+        {
+            "id": 9,
+            "name": "ExitTransition",
+            "storageType": "string",
+            "type": "enum",
+            "values": [
+                "Instant",
+                "FadeBlack",
+                "FadeWhite"
+            ],
+            "valuesAsFlags": false
+        },
+        {
+            "id": 10,
+            "name": "ExitType",
+            "storageType": "string",
+            "type": "enum",
+            "values": [
+                "Click",
+                "WalkOn"
+            ],
+            "valuesAsFlags": false
+        },
+        {
+            "color": "#ff55ffff",
+            "id": 4,
+            "members": [
+                {
+                    "name": "music",
+                    "type": "string",
+                    "value": ""
+                },
+                {
+                    "name": "pitch",
+                    "type": "float",
+                    "value": 1
+                }
+            ],
+            "name": "OverworldMap",
+            "type": "class",
+            "useAs": [
+                "map"
+            ]
+        },
+        {
+            "color": "#ffff00ff",
+            "id": 8,
+            "members": [
+            ],
+            "name": "Prop",
+            "type": "class",
+            "useAs": [
+                "object"
+            ]
+        },
+        {
+            "color": "#ffa0a0a4",
+            "id": 11,
+            "members": [
+                {
+                    "name": "fixed",
+                    "type": "bool",
+                    "value": false
+                },
+                {
+                    "name": "scrollX",
+                    "type": "float",
+                    "value": 0
+                },
+                {
+                    "name": "scrollY",
+                    "type": "float",
+                    "value": 0
+                },
+                {
+                    "name": "tint",
+                    "type": "color",
+                    "value": "#ffffffff"
+                }
+            ],
+            "name": "ScrollImage",
+            "type": "class",
+            "useAs": [
+                "layer"
+            ]
+        },
+        {
+            "color": "#ff55aaff",
+            "id": 1,
+            "members": [
+                {
+                    "name": "dir",
+                    "propertyType": "Direction",
+                    "type": "int",
+                    "value": 1
+                },
+                {
+                    "name": "fade_in",
+                    "type": "int",
+                    "value": 6
+                },
+                {
+                    "name": "id",
+                    "type": "int",
+                    "value": 0
+                }
+            ],
+            "name": "Warp",
+            "type": "class",
+            "useAs": [
+                "object",
+                "tile"
+            ]
+        },
+        {
+            "color": "#ff5100ff",
+            "id": 13,
+            "members": [
+                {
+                    "name": "dir",
+                    "propertyType": "Direction",
+                    "type": "int",
+                    "value": 0
+                },
+                {
+                    "name": "fade_idle",
+                    "type": "int",
+                    "value": 0
+                },
+                {
+                    "name": "fade_in",
+                    "type": "int",
+                    "value": 6
+                },
+                {
+                    "name": "fade_out",
+                    "type": "int",
+                    "value": 6
+                },
+                {
+                    "name": "relative",
+                    "type": "bool",
+                    "value": false
+                },
+                {
+                    "name": "sound",
+                    "type": "string",
+                    "value": ""
+                },
+                {
+                    "name": "type",
+                    "propertyType": "ExitType",
+                    "type": "string",
+                    "value": "Click"
+                },
+                {
+                    "name": "x",
+                    "type": "int",
+                    "value": 0
+                },
+                {
+                    "name": "y",
+                    "type": "int",
+                    "value": 0
+                }
+            ],
+            "name": "Teleport",
+            "type": "class",
+            "useAs": [
+                "object"
+            ]
+        }
+    ]
+}
