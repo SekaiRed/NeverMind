@@ -11,7 +11,7 @@ public:
 	//~MainMenuState() = default;
 
 	void initState();
-	void updateInputs();
+	void updateEvents(sf::Event e);
 	void updateState(float dt __attribute__((unused)));
 	void drawState(float dt __attribute__((unused)));
 

@@ -34,6 +34,7 @@ private:
 
 	// Game Variables
 	sf::VideoMode _videoMode;
+	sf::Event _event;
 
 	// Private Functions
 	void initVariables();

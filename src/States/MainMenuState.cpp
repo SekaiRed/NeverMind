@@ -1,6 +1,6 @@
 #include "MainMenuState.hpp"
-/*#include "OverworldState.hpp"
-#include "BattleState.hpp"*/
+#include "OverworldState.hpp"
+#include "BattleState.hpp"
 //#include "Game.hpp"
 
 MainMenuState::MainMenuState(GameDataRef data) :
@@ -12,27 +12,22 @@ void MainMenuState::initState()
 {
 }
 
-void MainMenuState::updateInputs()
+void MainMenuState::updateEvents(sf::Event e)
 {
-	// Event Polling
-	while (this->_data->window->pollEvent(this->event))
-	{
-		switch (this->event.type)
-		{
-			case sf::Event::Closed:
-				this->_data->window->close();
-				break;
-			case sf::Event::KeyPressed:
-				if (this->event.key.code == sf::Keyboard::Escape)
-					this->_data->window->close();
-				/*if (this->event.key.code == sf::Keyboard::Enter)
-					this->_data->states.addState(Engine::StateRef(new BattleState(this->_data)), false);
-				if (this->event.key.code == sf::Keyboard::M)
-					this->_data->states.addState(Engine::StateRef(new OverworldState("test-map.tmx", this->_data)), false);*/
-				break;
-			default:
-				break;
-		}
+	switch (e.type) {
+		case sf::Event::Closed:
+			this->_data->window->close();
+			break;
+		case sf::Event::KeyPressed:
+			/*if (e.key.code == sf::Keyboard::Escape)
+				this->_data->window->close();*/
+			if (e.key.code == sf::Keyboard::Enter)
+				this->_data->states.addState(Engine::StateRef(new BattleState(this->_data)), false);
+			if (e.key.code == sf::Keyboard::M)
+				this->_data->states.addState(Engine::StateRef(new OverworldState("test-map.tmx", this->_data)), false);
+			break;
+		default:
+			break;
 	}
 }
 

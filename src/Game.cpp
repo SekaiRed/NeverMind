@@ -35,7 +35,7 @@ void Game::initWindow()
 	this->_videoMode.width = SCREEN_WIDTH;
 
 	// creating our window view using the video mode and disabling resizablilty
-	this->_data->window->create(this->_videoMode, "LILY", sf::Style::Titlebar | sf::Style::Close);
+	this->_data->window->create(this->_videoMode, "LILY", sf::Style::Titlebar | sf::Style::Close | sf::Style::Resize);
 	sf::Image imgIco;
 	imgIco.loadFromFile("resources/img/heart.png");
 	this->_data->window->setIcon(imgIco.getSize().x, imgIco.getSize().y, imgIco.getPixelsPtr());
@@ -98,7 +98,35 @@ void Game::run()
 
 		while (accumulator >= dt)
 		{
-			this->_data->states.getActiveState()->updateInputs();
+			while (this->_data->window->pollEvent(_event)) {
+				switch (_event.type) {
+					case sf::Event::Closed:
+						this->_data->window->close();
+						break;
+					case sf::Event::KeyPressed:
+						if (this->_event.key.code == sf::Keyboard::Escape)
+							this->_data->window->close();
+					case sf::Event::Resized:
+						float m_initial_aspect_ratio = 4.0f/3.0f;
+						float m_window_width = _event.size.width;
+						float m_window_height = _event.size.height;
+						float new_width = m_initial_aspect_ratio * m_window_height;
+						float new_height = m_window_width / m_initial_aspect_ratio;
+						float offset_width = (m_window_width - new_width) / 2.0;
+						float offset_height = (m_window_height - new_height) / 2.0;
+						sf::View view = this->_data->window->getDefaultView();
+						if (m_window_width >= m_initial_aspect_ratio * m_window_height) {
+							view.setViewport(sf::FloatRect(offset_width / m_window_width, 0.0, new_width / m_window_width, 1.0));
+						} else {
+							view.setViewport(sf::FloatRect(0.0, offset_height / m_window_height, 1.0, new_height / m_window_height));
+						}
+
+						this->_data->window->setView(view);
+				}
+
+				this->_data->states.getActiveState()->updateEvents(_event);
+			}
+			
 			this->_data->states.getActiveState()->updateState(dt);
 
 			accumulator -= dt;

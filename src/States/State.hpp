@@ -14,7 +14,7 @@ public:
 	{}
 
 	virtual void initState() = 0;
-	virtual void updateInputs() = 0;
+	virtual void updateEvents(sf::Event e) = 0;
 	virtual void updateState(float dt) = 0;
 	virtual void drawState(float dt) = 0;
 	virtual void pauseState()
