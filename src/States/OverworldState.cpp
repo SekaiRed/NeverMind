@@ -12,18 +12,16 @@ OverworldState::OverworldState(std::string filename, GameDataRef data) :
         for(int i = 0; i < layers.size(); i++) {
             mapLayers.push_back(MapLayer(map, i));
         }*/
-        const auto& layers = map.getLayers();
-        for(const auto& layer : layers)
-        {
-            std::cout << layer->getName() << "\n";
-        }
-        //layers = map.getLayers();
         /*const auto& layers = map.getLayers();
         for(const auto& layer : layers)
         {
-            //layers.push_back(std::move(layer));
-            if(layer->getType() == tmx::Layer::Type::Object)
-            {
+            std::cout << layer->getName() << "\n";
+        }*/
+        //const auto& layers = map.getLayers();
+        const auto& layers = map.getLayers();
+        for(int i = 0; i < layers.size(); i++) {
+            const auto& layer = layers[i];
+            if(layer->getType() == tmx::Layer::Type::Object) {
                 const auto& objectLayer = layer->getLayerAs<tmx::ObjectGroup>();
                 const auto& objects = objectLayer.getObjects();
                 for(const auto& object : objects)
@@ -31,10 +29,9 @@ OverworldState::OverworldState(std::string filename, GameDataRef data) :
                     //do stuff with object properties
                 }
             }
-            else if(layer->getType() == tmx::Layer::Type::Tile)
-            {
+            else if(layer->getType() == tmx::Layer::Type::Tile) {
                 const auto& tileLayer = layer->getLayerAs<tmx::TileLayer>();
-                layers.push_back(MapLayer(layer.get()->));
+                mapLayers.push_back(new MapLayer(map, i));
                 //read out tile layer properties etc...
             }
         }
@@ -43,7 +40,7 @@ OverworldState::OverworldState(std::string filename, GameDataRef data) :
         for(const auto& tileset : tilesets)
         {
             //read out tile set properties, load textures etc...
-        }*/
+        }
     }
 }
 
@@ -90,11 +87,14 @@ void OverworldState::drawState(float dt __attribute__((unused)))
     window.draw(layerOne);
     window.draw(layerTwo);
     window.display();*/
-    /*std::vector<MapLayer>::iterator itl = mapLayers.begin();
+    this->_data->window->clear(sf::Color::Black);
+
+    std::vector<Layer*>::iterator itl = mapLayers.begin();
     while (itl != mapLayers.end()) {
-        (*itl).update(duration);
-        this->_data->window->draw(*itl);
-    }*/
+        (*itl)->update(duration);
+        this->_data->window->draw(**itl);
+        itl++;
+    }
 
 	// Displays rendered obejcts
 	this->_data->window->display();

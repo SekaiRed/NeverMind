@@ -52,9 +52,11 @@ public:
         }
     }*/
 
-    ~MapLayer() = default;
+    /*~MapLayer() = default;
     MapLayer(const MapLayer&) = delete;
-    MapLayer& operator = (const MapLayer&) = delete;
+    MapLayer& operator = (const MapLayer&) = delete;*/
+
+    LayerType getType() const;
 
     //const sf::FloatRect& getGlobalBounds() const { return m_globalBounds; }
 

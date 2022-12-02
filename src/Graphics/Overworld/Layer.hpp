@@ -34,6 +34,7 @@ public:
     const std::vector<tmx::Property>& getProperties() const { return m_properties; }
     virtual LayerType getType() const = 0;
     virtual void update(sf::Time elapsed) = 0;
+    virtual void draw(sf::RenderTarget& rt, sf::RenderStates states) const = 0;
 
 private:
     int m_ID;

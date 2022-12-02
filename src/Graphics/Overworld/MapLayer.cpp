@@ -27,6 +27,10 @@ MapLayer::MapLayer(const tmx::Map& map, std::size_t idx) : Layer::Layer(map, idx
     }
 }
 
+LayerType MapLayer::getType() const {
+    return LayerType::Tile;
+}
+
 void MapLayer::setTile(int tileX, int tileY, tmx::TileLayer::Tile tile, bool refresh) {
     sf::Vector2u chunkLocale;
     const auto& selectedChunk = getChunkAndTransform(tileX, tileY, chunkLocale);

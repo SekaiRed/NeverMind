@@ -20,5 +20,5 @@ public:
 
 private:
 	GameDataRef _data;
-    //std::vector<MapLayer> mapLayers;
+    std::vector<Layer*> mapLayers;
 };
