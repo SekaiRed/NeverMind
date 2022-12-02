@@ -24,7 +24,7 @@ void MainMenuState::updateEvents(sf::Event e)
 			if (e.key.code == sf::Keyboard::Enter)
 				this->_data->states.addState(Engine::StateRef(new BattleState(this->_data)), false);
 			if (e.key.code == sf::Keyboard::M)
-				this->_data->states.addState(Engine::StateRef(new OverworldState("test-map.tmx", this->_data)), false);
+				this->_data->states.addState(Engine::StateRef(new OverworldState("apartment", this->_data)), false);
 			break;
 		default:
 			break;

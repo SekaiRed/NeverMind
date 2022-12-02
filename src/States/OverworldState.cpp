@@ -6,7 +6,7 @@ OverworldState::OverworldState(std::string filename, GameDataRef data) :
 	_data(data)
 {
     tmx::Map map;
-    if(map.load("resources/data/maps/" + filename))
+    if(map.load("resources/data/maps/" + filename + ".tmx"))
     {
         /*const auto& layers = map.getLayers();
         for(int i = 0; i < layers.size(); i++) {
