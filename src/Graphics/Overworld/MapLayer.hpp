@@ -157,7 +157,7 @@ private:
         {
             setPosition(position);
             layerOpacity = static_cast<sf::Uint8>(layer.getOpacity() /  1.f * 255.f);
-            sf::Color vertColour = sf::Color(200 ,200, 200, layerOpacity);
+            sf::Color vertColour = sf::Color(255 ,255, 255, layerOpacity);
             auto offset = layer.getOffset();
             layerOffset.x = offset.x;
             layerOffset.x = offset.y;
