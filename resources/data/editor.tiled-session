@@ -3,10 +3,10 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "maps/apartment.tmx",
+    "activeFile": "maps/test-full.tmx",
     "expandedProjectPaths": [
-        "maps",
         "tileset",
+        "maps",
         "template",
         "."
     ],
@@ -19,8 +19,8 @@
             "scale": 2,
             "selectedLayer": 12,
             "viewCenter": {
-                "x": 345.25,
-                "y": 387
+                "x": 384,
+                "y": 383.75
             }
         },
         "maps/apartment.tmx": {
@@ -30,8 +30,8 @@
             "scale": 2,
             "selectedLayer": 12,
             "viewCenter": {
-                "x": 301.75,
-                "y": 418.5
+                "x": 213,
+                "y": 511.75
             }
         },
         "maps/test-full.tmj": {
@@ -44,15 +44,15 @@
         },
         "maps/test-full.tmx": {
             "expandedObjectLayers": [
-                15,
                 10,
-                11
+                11,
+                15
             ],
             "scale": 1,
-            "selectedLayer": 10,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 559.5,
-                "y": 536
+                "x": 558.5,
+                "y": 7
             }
         },
         "maps/test-map.tmx": {
@@ -73,8 +73,8 @@
             "scale": 1.5,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 660.3333333333333,
-                "y": 533.3333333333333
+                "x": 549.6666666666666,
+                "y": 511.66666666666663
             }
         },
         "tileset/DW_TreeStump_anim.tsx": {
@@ -123,10 +123,10 @@
     "project": "editor.tiled-project",
     "property.type": "int",
     "recentFiles": [
-        "maps/test-full.tmx",
-        "maps/whitespace.tmx",
         "maps/DEBUG.tmx",
         "maps/apartment.tmx",
+        "maps/whitespace.tmx",
+        "maps/test-full.tmx",
         "maps/test-map.tmx",
         "maps/test-full.tmj",
         "tileset/whitespace.tsx",

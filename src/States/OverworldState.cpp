@@ -28,28 +28,30 @@ OverworldState::OverworldState(std::string filename, GameDataRef data) :
                 {
                     //do stuff with object properties
                 }
-            }
-            else if(layer->getType() == tmx::Layer::Type::Tile) {
-                const auto& tileLayer = layer->getLayerAs<tmx::TileLayer>();
+            } else if(layer->getType() == tmx::Layer::Type::Tile) {
+                //const auto& tileLayer = layer->getLayerAs<tmx::TileLayer>();
                 mapLayers.push_back(new MapLayer(map, i));
-                //read out tile layer properties etc...
+            } else if(layer->getType() == tmx::Layer::Type::Image) {
+                //const auto& tileLayer = layer->getLayerAs<tmx::TileLayer>();
+                mapLayers.push_back(new ImageLayer(map, i));
             }
         }
 
-        const auto& tilesets = map.getTilesets();
-        for(const auto& tileset : tilesets)
-        {
-            //read out tile set properties, load textures etc...
-        }
+        const auto& c = map.getBackgroundColour();
+        _color = sf::Color(c.r, c.g, c.b, c.a);
     }
 }
 
 void OverworldState::initState()
 {
+    sf::View view = this->_data->window->getView();
+    view.move(0, 256);
+    this->_data->window->setView(view);
 }
 
 void OverworldState::updateEvents(sf::Event e)
 {
+    sf::View v = this->_data->window->getView();
 	switch (e.type) {
         case sf::Event::Closed:
             this->_data->window->close();
@@ -59,6 +61,17 @@ void OverworldState::updateEvents(sf::Event e)
                 this->_data->window->close();
             if (e.key.code == sf::Keyboard::Enter)
                 this->_data->states.addState(Engine::StateRef(new BattleState(this->_data)), false);
+
+            if (e.key.code == sf::Keyboard::Down)
+                v.move(0, 32);
+            if (e.key.code == sf::Keyboard::Up)
+                v.move(0, -32);
+            if (e.key.code == sf::Keyboard::Left)
+                v.move(-32, 0);
+            if (e.key.code == sf::Keyboard::Right)
+                v.move(32, 0);
+            this->_data->window->setView(v);
+                
             break;
         default:
             break;
@@ -87,7 +100,7 @@ void OverworldState::drawState(float dt __attribute__((unused)))
     window.draw(layerOne);
     window.draw(layerTwo);
     window.display();*/
-    this->_data->window->clear(sf::Color::Black);
+    this->_data->window->clear(_color);
 
     std::vector<Layer*>::iterator itl = mapLayers.begin();
     while (itl != mapLayers.end()) {

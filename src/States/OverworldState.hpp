@@ -6,6 +6,7 @@
 #include "../Game.hpp"
 #include "State.hpp"
 #include "../Graphics/Overworld/MapLayer.hpp"
+#include "../Graphics/Overworld/ImageLayer.hpp"
 
 class OverworldState : public Engine::State
 {
@@ -20,5 +21,6 @@ public:
 
 private:
 	GameDataRef _data;
+	sf::Color _color;
     std::vector<Layer*> mapLayers;
 };

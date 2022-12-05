@@ -126,8 +126,6 @@ void Game::run()
 						break;
 				}
 
-				std::cout << "lol\n"; 
-
 				this->_data->states.getActiveState()->updateEvents(_event);
 			}
 			

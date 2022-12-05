@@ -86,7 +86,7 @@ public:
         return selectedChunk->getColor(chunkLocale.x, chunkLocale.y);
     }*/
     
-    void update(sf::Time elapsed);
+    virtual void update(sf::Time elapsed);
     /*{
         for (auto& c : m_visibleChunks) 
         {
@@ -570,13 +570,13 @@ private:
         std::swap(m_visibleChunks, visible);
     }
 
-    void draw(sf::RenderTarget& rt, sf::RenderStates states) const override
-    {
+    virtual void draw(sf::RenderTarget& rt, sf::RenderStates states) const override;
+    /*{
         //calc view coverage and draw nearest chunks
         updateVisibility(rt.getView());
         for (const auto& c : m_visibleChunks)
         {
             rt.draw(*c, states);
         }
-    }
+    }*/
 };

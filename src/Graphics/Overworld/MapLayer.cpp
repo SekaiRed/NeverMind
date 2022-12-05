@@ -77,3 +77,12 @@ void MapLayer::update(sf::Time elapsed) {
         }
     }
 }
+
+void MapLayer::draw(sf::RenderTarget& rt, sf::RenderStates states) const {
+    //calc view coverage and draw nearest chunks
+    updateVisibility(rt.getView());
+    for (const auto& c : m_visibleChunks)
+    {
+        rt.draw(*c, states);
+    }
+}
