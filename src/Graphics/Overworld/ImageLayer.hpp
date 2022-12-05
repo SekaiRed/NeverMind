@@ -12,7 +12,7 @@ class ImageLayer final : public Layer {
 public:
     ImageLayer(const tmx::Map& map, std::size_t idx);
     virtual LayerType getType() const;
-    virtual void update(sf::Time elapsed);
+    virtual void update(sf::Time elapsed) override;
     virtual void draw(sf::RenderTarget& rt, sf::RenderStates states) const override;
 private:
     sf::Texture imageTex;

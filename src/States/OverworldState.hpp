@@ -12,8 +12,10 @@ class OverworldState : public Engine::State
 {
 public:
 	OverworldState(std::string filename, GameDataRef data);
-	//~MainMenuState() = default;
+	
+	void drawWorld(int offsetX, int offsetY, bool ignoreImages = false);
 
+	//Overrides
 	void initState();
 	void updateEvents(sf::Event e);
 	void updateState(float dt __attribute__((unused)));
@@ -23,4 +25,5 @@ private:
 	GameDataRef _data;
 	sf::Color _color;
     std::vector<Layer*> mapLayers;
+	sf::Vector2i _size;
 };

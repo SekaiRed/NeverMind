@@ -123,6 +123,7 @@ private:
     sf::Vector2u m_chunkCount;
     sf::Vector2u m_MapTileSize;   // general Tilesize of Map
     sf::FloatRect m_globalBounds;
+    sf::Vector2f m_cachedOffset;
 
     using TextureResource = std::map<std::string, std::unique_ptr<sf::Texture>>;
     TextureResource m_textureResource;

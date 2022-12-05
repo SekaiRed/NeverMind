@@ -6,9 +6,9 @@
     "activeFile": "maps/test-full.tmx",
     "expandedProjectPaths": [
         "tileset",
-        "maps",
+        ".",
         "template",
-        "."
+        "maps"
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
@@ -44,15 +44,15 @@
         },
         "maps/test-full.tmx": {
             "expandedObjectLayers": [
-                10,
+                15,
                 11,
-                15
+                10
             ],
             "scale": 1,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 558.5,
-                "y": 7
+                "x": 557.5,
+                "y": 402
             }
         },
         "maps/test-map.tmx": {
@@ -109,11 +109,11 @@
     "last.exportedFilePath": "D:/code/CPP/OmoriPlusPlus/resources/data/maps",
     "last.imagePath": "D:/code/CPP/OmoriPlusPlus/resources/img/tileset",
     "last.objectTemplatePath": "D:/code/CPP/OmoriPlusPlus/resources/data/template",
-    "map.height": 24,
+    "map.height": 9,
     "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
     "map.lastUsedFormat": "tmx",
     "map.renderOrder": null,
-    "map.width": 24,
+    "map.width": 6,
     "openFiles": [
         "maps/test-full.tmx",
         "maps/whitespace.tmx",

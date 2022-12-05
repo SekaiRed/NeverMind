@@ -13,7 +13,7 @@
  <imagelayer id="13" name="SpaceBG" class="ScrollImage" repeatx="1" repeaty="1">
   <image source="../../img/parallax/space_sky.png" width="1023" height="397"/>
   <properties>
-   <property name="fixed" type="bool" value="false"/>
+   <property name="fixed" type="bool" value="true"/>
    <property name="scrollX" type="float" value="30"/>
   </properties>
  </imagelayer>
