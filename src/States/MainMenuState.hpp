@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include "../Game.hpp"
 //#include "Global.hpp"
 #include "State.hpp"

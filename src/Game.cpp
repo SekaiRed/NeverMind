@@ -106,6 +106,7 @@ void Game::run()
 					case sf::Event::KeyPressed:
 						if (this->_event.key.code == sf::Keyboard::Escape)
 							this->_data->window->close();
+						break;
 					case sf::Event::Resized:
 						float m_initial_aspect_ratio = 4.0f/3.0f;
 						float m_window_width = _event.size.width;
@@ -122,7 +123,10 @@ void Game::run()
 						}
 
 						this->_data->window->setView(view);
+						break;
 				}
+
+				std::cout << "lol\n"; 
 
 				this->_data->states.getActiveState()->updateEvents(_event);
 			}

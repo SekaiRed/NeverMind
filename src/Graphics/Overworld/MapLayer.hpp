@@ -1,5 +1,4 @@
-#ifndef SFML_ORTHO_HPP_
-#define SFML_ORTHO_HPP_
+#pragma once
 
 #include <tmxlite/Map.hpp>
 #include <tmxlite/TileLayer.hpp>
@@ -56,7 +55,7 @@ public:
     MapLayer(const MapLayer&) = delete;
     MapLayer& operator = (const MapLayer&) = delete;*/
 
-    LayerType getType() const;
+    virtual LayerType getType() const;
 
     //const sf::FloatRect& getGlobalBounds() const { return m_globalBounds; }
 
@@ -581,5 +580,3 @@ private:
         }
     }
 };
-
-#endif //SFML_ORTHO_HPP_

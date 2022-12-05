@@ -14,6 +14,7 @@ void MainMenuState::initState()
 
 void MainMenuState::updateEvents(sf::Event e)
 {
+	std::cout << e.type << "\n";
 	switch (e.type) {
 		case sf::Event::Closed:
 			this->_data->window->close();

@@ -4,6 +4,10 @@
 
 namespace Engine
 {
+	AssetManager::AssetManager() {
+		fallback.create(2, 2, sf::Color::Magenta);
+	}
+	
 	void AssetManager::loadTexture(std::string name)
 	{
 		std::cout << "Loaded " << name << "\n";

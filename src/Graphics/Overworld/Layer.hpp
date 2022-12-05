@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics/Drawable.hpp>
+#include <SFML/System/Time.hpp>
 
 #include <tmxlite/Map.hpp>
 #include <tmxlite/Property.hpp>

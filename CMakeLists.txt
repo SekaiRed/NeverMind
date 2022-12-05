@@ -41,7 +41,11 @@ add_subdirectory(lib/tmxlite)
 #NO_DEFAULT_PATH
 
 #find_package(SFML 2.5.1 NO_DEFAULT_PATH COMPONENTS graphics audio REQUIRED)
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+add_executable(${CMAKE_PROJECT_NAME} ${TARGET_HDR} ${TARGET_SRC} ${APP_ICON_RESOURCE_WINDOWS})
+else ()
 add_executable(${CMAKE_PROJECT_NAME} WIN32 ${TARGET_HDR} ${TARGET_SRC} ${APP_ICON_RESOURCE_WINDOWS})
+endif ()
 target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE -Werror)
 
 #add_custom_target(copy_resources ALL

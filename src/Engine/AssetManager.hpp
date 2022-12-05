@@ -9,11 +9,12 @@ class AssetManager
 {
 
 private:
+	sf::Image fallback;
 	std::map<std::string, sf::Texture> _textures;
 	std::map<std::string, sf::Font> _fonts;
 
 public:
-	AssetManager() {}
+	AssetManager();
 	~AssetManager() {}
 
 	void loadTexture(std::string name);
