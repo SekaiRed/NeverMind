@@ -3,11 +3,11 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "maps/test-full.tmx",
+    "activeFile": "maps/bedspace.tmx",
     "expandedProjectPaths": [
         "tileset",
-        ".",
         "template",
+        ".",
         "maps"
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
@@ -23,15 +23,31 @@
                 "y": 383.75
             }
         },
+        "maps/alcoholspace.tmx": {
+            "scale": 1,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 96,
+                "y": 144.5
+            }
+        },
         "maps/apartment.tmx": {
             "expandedObjectLayers": [
                 14
             ],
             "scale": 2,
-            "selectedLayer": 12,
+            "selectedLayer": 11,
             "viewCenter": {
                 "x": 213,
                 "y": 511.75
+            }
+        },
+        "maps/bedspace.tmx": {
+            "scale": 3.2025390624999996,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 128.17954503872662,
+                "y": 128.0234189180948
             }
         },
         "maps/test-full.tmj": {
@@ -45,14 +61,14 @@
         "maps/test-full.tmx": {
             "expandedObjectLayers": [
                 15,
-                11,
-                10
+                10,
+                11
             ],
             "scale": 1,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 557.5,
-                "y": 402
+                "x": 480,
+                "y": 479.5
             }
         },
         "maps/test-map.tmx": {
@@ -109,32 +125,34 @@
     "last.exportedFilePath": "D:/code/CPP/OmoriPlusPlus/resources/data/maps",
     "last.imagePath": "D:/code/CPP/OmoriPlusPlus/resources/img/tileset",
     "last.objectTemplatePath": "D:/code/CPP/OmoriPlusPlus/resources/data/template",
-    "map.height": 9,
+    "map.height": 8,
     "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
     "map.lastUsedFormat": "tmx",
     "map.renderOrder": null,
-    "map.width": 6,
+    "map.width": 8,
     "openFiles": [
         "maps/test-full.tmx",
         "maps/whitespace.tmx",
         "maps/apartment.tmx",
-        "maps/DEBUG.tmx"
+        "maps/DEBUG.tmx",
+        "maps/alcoholspace.tmx",
+        "maps/bedspace.tmx"
     ],
     "project": "editor.tiled-project",
-    "property.type": "int",
+    "property.type": "bool",
     "recentFiles": [
-        "maps/DEBUG.tmx",
-        "maps/apartment.tmx",
-        "maps/whitespace.tmx",
         "maps/test-full.tmx",
+        "maps/whitespace.tmx",
+        "maps/apartment.tmx",
+        "maps/DEBUG.tmx",
+        "maps/alcoholspace.tmx",
+        "maps/bedspace.tmx",
         "maps/test-map.tmx",
         "maps/test-full.tmj",
         "tileset/whitespace.tsx",
         "tileset/DW_TreeStump_anim.tsx",
         "tileset/flags.tsx",
-        "tileset/terrain.tsx",
-        "tileset/FA_InteriorTileset2.tsx",
-        "tileset/DW_VastForest.tsx"
+        "tileset/terrain.tsx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.transparentColor": "#a49b82",

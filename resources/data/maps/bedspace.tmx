@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.9" tiledversion="1.9.2" class="OverworldMap" orientation="orthogonal" renderorder="right-down" width="8" height="8" tilewidth="32" tileheight="32" infinite="0" nextlayerid="5" nextobjectid="1">
+ <properties>
+  <property name="repeatX" type="bool" value="true"/>
+  <property name="repeatY" type="bool" value="false"/>
+ </properties>
+ <tileset firstgid="1" source="../tileset/FA_InteriorTileset.tsx"/>
+ <imagelayer id="4" name="Image Layer 1" class="ScrollImage">
+  <image source="../../img/parallax/parallax_black_space.png" width="679" height="408"/>
+  <properties>
+   <property name="scrollX" type="float" value="10"/>
+  </properties>
+ </imagelayer>
+ <layer id="1" name="Floor" width="8" height="8">
+  <data encoding="csv">
+609,609,609,0,609,609,609,609,
+609,609,609,609,609,609,609,609,
+609,609,609,609,609,609,609,609,
+609,0,609,609,609,609,609,609,
+609,609,609,609,609,0,609,609,
+609,609,609,609,609,609,609,609,
+609,609,609,609,0,609,609,609,
+609,609,609,609,609,609,609,609
+</data>
+ </layer>
+ <layer id="2" name="Carpet" width="8" height="8">
+  <data encoding="csv">
+73,73,74,0,0,232,233,233,
+73,73,74,0,0,232,233,233,
+105,105,106,0,0,264,265,265,
+0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,
+201,201,202,0,0,40,41,41,
+233,233,234,0,0,72,73,73,
+233,233,234,0,0,72,73,73
+</data>
+ </layer>
+ <layer id="3" name="Details" width="8" height="8">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,
+0,0,0,605,606,0,0,0,
+0,0,0,637,638,0,0,0,
+0,0,0,669,670,0,0,0,
+0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0
+</data>
+ </layer>
+</map>

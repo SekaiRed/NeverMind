@@ -26,4 +26,6 @@ private:
 	sf::Color _color;
     std::vector<Layer*> mapLayers;
 	sf::Vector2i _size;
+	bool _repeatX = false;
+	bool _repeatY = false;
 };

@@ -24,7 +24,7 @@ void MainMenuState::updateEvents(sf::Event e)
 			if (e.key.code == sf::Keyboard::Enter)
 				this->_data->states.addState(Engine::StateRef(new BattleState(this->_data)), false);
 			if (e.key.code == sf::Keyboard::M)
-				this->_data->states.addState(Engine::StateRef(new OverworldState("alcoholspace", this->_data)), false);
+				this->_data->states.addState(Engine::StateRef(new OverworldState("whitespace", this->_data)), false);
 			break;
 		default:
 			break;
@@ -53,7 +53,7 @@ void MainMenuState::drawState(float dt __attribute__((unused)))
 	if (!font.loadFromFile("resources/fonts/OMORI_GAME2.ttf"))
 	{
 		// error...
-		throw GameException("yeah");
+		throw GameException("Could not load font");
 	}
 
 	// select the font

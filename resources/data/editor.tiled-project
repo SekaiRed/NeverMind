@@ -151,6 +151,21 @@
                     "name": "pitch",
                     "type": "float",
                     "value": 1
+                },
+                {
+                    "name": "repeatX",
+                    "type": "bool",
+                    "value": false
+                },
+                {
+                    "name": "repeatY",
+                    "type": "bool",
+                    "value": false
+                },
+                {
+                    "name": "volume",
+                    "type": "float",
+                    "value": 1
                 }
             ],
             "name": "OverworldMap",
@@ -199,34 +214,6 @@
             "type": "class",
             "useAs": [
                 "layer"
-            ]
-        },
-        {
-            "color": "#ff55aaff",
-            "id": 1,
-            "members": [
-                {
-                    "name": "dir",
-                    "propertyType": "Direction",
-                    "type": "int",
-                    "value": 1
-                },
-                {
-                    "name": "fade_in",
-                    "type": "int",
-                    "value": 6
-                },
-                {
-                    "name": "id",
-                    "type": "int",
-                    "value": 0
-                }
-            ],
-            "name": "Warp",
-            "type": "class",
-            "useAs": [
-                "object",
-                "tile"
             ]
         },
         {
@@ -285,6 +272,34 @@
             "type": "class",
             "useAs": [
                 "object"
+            ]
+        },
+        {
+            "color": "#ff55aaff",
+            "id": 1,
+            "members": [
+                {
+                    "name": "dir",
+                    "propertyType": "Direction",
+                    "type": "int",
+                    "value": 1
+                },
+                {
+                    "name": "fade_in",
+                    "type": "int",
+                    "value": 6
+                },
+                {
+                    "name": "id",
+                    "type": "int",
+                    "value": 0
+                }
+            ],
+            "name": "Warp",
+            "type": "class",
+            "useAs": [
+                "object",
+                "tile"
             ]
         }
     ]

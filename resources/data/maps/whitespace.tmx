@@ -2,6 +2,8 @@
 <map version="1.9" tiledversion="1.9.2" class="OverworldMap" orientation="orthogonal" renderorder="right-down" width="36" height="32" tilewidth="32" tileheight="32" infinite="0" backgroundcolor="#ffffff" nextlayerid="6" nextobjectid="9">
  <properties>
   <property name="music" value="WHITESPACE"/>
+  <property name="repeatX" type="bool" value="true"/>
+  <property name="repeatY" type="bool" value="true"/>
  </properties>
  <tileset firstgid="1" source="../tileset/whitespace.tsx"/>
  <tileset firstgid="37" source="../tileset/flags.tsx"/>

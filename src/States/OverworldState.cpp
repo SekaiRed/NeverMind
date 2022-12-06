@@ -41,6 +41,11 @@ OverworldState::OverworldState(std::string filename, GameDataRef data) :
         _color = sf::Color(c.r, c.g, c.b, c.a);
 
         _size = sf::Vector2i(map.getBounds().width, map.getBounds().height);
+
+        for(const auto& property : map.getProperties()) {
+            if(property.getName() == "repeatX") _repeatX = property.getBoolValue();
+            if(property.getName() == "repeatY") _repeatY = property.getBoolValue();
+        }
     }
 }
 
@@ -95,107 +100,60 @@ void OverworldState::updateState(float dt __attribute__((unused)))
 // marks dt to not warn compiler
 void OverworldState::drawState(float dt __attribute__((unused)))
 {
-	// just for fun, heres hello world text
-	// SAMPLE RENDER CODE:
-
 	// background color
     this->_data->window->clear(_color);
 
-    /*std::vector<Layer*>::iterator itl = mapLayers.begin();
-    while (itl != mapLayers.end()) {
-        (*itl)->update(duration);
-        this->_data->window->draw(**itl);
-        itl++;
-    }*/
-    sf::RenderTexture tex;;
-    tex.create(_size.x, _size.y);
-    
-    std::vector<Layer*>::iterator itl = mapLayers.begin();
-    while (itl != mapLayers.end()) {
-        //(*itl)->update(duration);
-        //this->_data->window->getView().
-        //(itl**)
-        this->_data->window->draw(**itl);
-        if((*itl)->getType() != LayerType::Image) {
-            tex.draw(**itl);
-        }
-        itl++;
-    }
-    tex.display();
-
-    sf::Sprite sprite1;
-    sprite1.setTexture(tex.getTexture());
-    
-    /*sprite1.setPosition(_size.x, 0);
-    this->_data->window->draw(sprite1);
-    sprite1.setPosition(-_size.x, 0);
-    this->_data->window->draw(sprite1);
-    sprite1.setPosition(0, _size.y);
-    this->_data->window->draw(sprite1);
-    sprite1.setPosition(0, -_size.y);
-    this->_data->window->draw(sprite1);*/
-    sf::View view = this->_data->window->getView();
-    sf::Vector2f viewCorner = view.getCenter();
-    viewCorner -= view.getSize() / 2.f;
-
-    int posX = static_cast<int>(std::floor(viewCorner.x / _size.x));
-    int posY = static_cast<int>(std::floor(viewCorner.y / _size.y));
-    int posX2 = static_cast<int>(std::ceil((viewCorner.x + view.getSize().x) / _size.x));
-    int posY2 = static_cast<int>(std::ceil((viewCorner.y + view.getSize().y)/ _size.y));
-    sf::IntRect repeatPos = sf::IntRect(posX, posY, posX2 - posX, posY2 - posY);
-    for(int x = 0; x < repeatPos.width; x++) {
-        for(int y = 0; y < repeatPos.height; y++) {
-            //std::cout << "\033[31m" << _size.x * (x + repeatPos.left) << ", " << _size.y * (y + repeatPos.top) << "\n";
-            if((x + repeatPos.left) == 0 && (y + repeatPos.top) == 0) {
-                continue;
+    //std::cout << _repeatX << _repeatY << "\n";
+    if(_repeatX || _repeatY) {
+        sf::RenderTexture extendedMapTexture;;
+        extendedMapTexture.create(_size.x, _size.y);
+        
+        std::vector<Layer*>::iterator itl = mapLayers.begin();
+        while (itl != mapLayers.end()) {
+            this->_data->window->draw(**itl);
+            if((*itl)->getType() != LayerType::Image) {
+                extendedMapTexture.draw(**itl);
             }
-
-            std::cout << _size.x * (x + repeatPos.left) << ", " << _size.y * (y + repeatPos.top) << "\n";
-            sprite1.setPosition(_size.x * (x + repeatPos.left), _size.y * (y + repeatPos.top));
-            this->_data->window->draw(sprite1);
+            itl++;
         }
-    }
-    //std::cout << "repeatPos : " << repeatPos.left << ", " << repeatPos.top << " / " << repeatPos.width << ", " << repeatPos.height << "\n";
-    //std::cout << "pos : " << posX << ", " << posY << " / " << posX2 << ", " << posY2 << "\n";
+        extendedMapTexture.display();
 
-    //sf::FloatRect cameraRect();
+        sf::Sprite extendedMapSprite;
+        extendedMapSprite.setTexture(extendedMapTexture.getTexture());
+        
+        sf::View view = this->_data->window->getView();
+        sf::Vector2f viewCorner = view.getCenter();
+        viewCorner -= view.getSize() / 2.f;
 
-    /*for (auto y = posY; y < posY2; ++y)
-    {
-        for (auto x = posX; x < posX2; ++x)
-        {
-            std::size_t idx = y * int(_size.x) + x;
-            if (idx >= 0u && idx < m_chunks.size() && !m_chunks[idx]->empty())
-            {
-                //visible.push_back(m_chunks[idx].get());
+        int posX = static_cast<int>(std::floor(viewCorner.x / _size.x));
+        int posY = static_cast<int>(std::floor(viewCorner.y / _size.y));
+        int posX2 = static_cast<int>(std::ceil((viewCorner.x + view.getSize().x) / _size.x));
+        int posY2 = static_cast<int>(std::ceil((viewCorner.y + view.getSize().y)/ _size.y));
+        sf::IntRect repeatPos = sf::IntRect(posX, posY, posX2 - posX, posY2 - posY);
+        /*if(!_repeatX) repeatPos.width = 1;
+        if(!_repeatY) repeatPos.height = 1;*/
+        for(int x = 0; x < repeatPos.width; x++) {
+            for(int y = 0; y < repeatPos.height; y++) {
+                if(!_repeatX && (x + repeatPos.left) != 0)
+                    continue;
+                if(!_repeatY && (y + repeatPos.top) != 0)
+                    continue;
+                if((x + repeatPos.left) == 0 && (y + repeatPos.top) == 0) {
+                    continue;
+                }
+
+                extendedMapSprite.setPosition(_size.x * (x + repeatPos.left), _size.y * (y + repeatPos.top));
+                this->_data->window->draw(extendedMapSprite);
             }
         }
-    }*/
-
-    
-    /*drawWorld(0, 0);
-    drawWorld(-_size.x, 0, true);
-    drawWorld(_size.x, 0, true);
-    drawWorld(0, -_size.y, true);
-    drawWorld(0, _size.y, true);
-    drawWorld(-_size.x, -_size.y, true);
-    drawWorld(-_size.x, _size.y, true);
-    drawWorld(_size.x, -_size.y, true);
-    drawWorld(_size.x, _size.y, true);*/
+    } else {
+        std::vector<Layer*>::iterator itl = mapLayers.begin();
+        while (itl != mapLayers.end()) {
+            this->_data->window->draw(**itl);
+            itl++;
+        }
+    }
 
 	// Displays rendered obejcts
 	this->_data->window->display();
 }
-
-/*void OverworldState::drawWorld(int offsetX, int offsetY, bool fake) {
-    std::vector<Layer*>::iterator itl = mapLayers.begin();
-    while (itl != mapLayers.end()) {
-        //(*itl)->update(duration);
-        //this->_data->window->getView().
-        //(itl**)
-        if(!((*itl)->getType() == LayerType::Image && fake)) {
-            this->_data->window->draw(**itl);
-        }
-        itl++;
-    }
-}*/

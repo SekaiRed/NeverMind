@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="6" height="9" tilewidth="32" tileheight="32" infinite="0" backgroundcolor="#ffaaff" nextlayerid="3" nextobjectid="1">
+<map version="1.9" tiledversion="1.9.2" class="OverworldMap" orientation="orthogonal" renderorder="right-down" width="6" height="9" tilewidth="32" tileheight="32" infinite="0" backgroundcolor="#ffaaff" nextlayerid="3" nextobjectid="1">
+ <properties>
+  <property name="repeatX" type="bool" value="true"/>
+  <property name="repeatY" type="bool" value="true"/>
+ </properties>
  <tileset firstgid="1" source="../tileset/FA_InteriorTileset.tsx"/>
  <layer id="1" name="Tile Layer 1" width="6" height="9">
   <data encoding="csv">
