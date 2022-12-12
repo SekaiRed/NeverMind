@@ -64,8 +64,6 @@ void OverworldState::updateEvents(sf::Event e)
             this->_data->window->close();
             break;
         case sf::Event::KeyPressed:
-            if (e.key.code == sf::Keyboard::Escape)
-                this->_data->window->close();
             if (e.key.code == sf::Keyboard::Enter)
                 this->_data->states.addState(Engine::StateRef(new BattleState(this->_data)), false);
 

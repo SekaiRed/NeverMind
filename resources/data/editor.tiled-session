@@ -5,10 +5,10 @@
     },
     "activeFile": "maps/bedspace.tmx",
     "expandedProjectPaths": [
-        "tileset",
+        "maps",
         "template",
         ".",
-        "maps"
+        "tileset"
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
@@ -43,11 +43,11 @@
             }
         },
         "maps/bedspace.tmx": {
-            "scale": 3.2025390624999996,
-            "selectedLayer": 1,
+            "scale": 1,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 128.17954503872662,
-                "y": 128.0234189180948
+                "x": 268.5,
+                "y": 111
             }
         },
         "maps/test-full.tmj": {
