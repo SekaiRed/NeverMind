@@ -11,7 +11,7 @@
 #define SCREEN_WIDTH 640
 #define SCREEN_HEIGHT 480
 
-class BattleState : public Engine::State
+class BattleState : public BaseState
 {
 public:
 	BattleState(GameDataRef data);
@@ -26,7 +26,7 @@ public:
 	std::vector<BattlePlayer> players;
 
 private:
-	GameDataRef _data;
+	//GameDataRef _data;
 	Engine::AssetManager _rsc;
 	BattleRender _render;
 	//TODO logic database goes here (skills, items data, event chains)

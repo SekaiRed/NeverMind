@@ -3,9 +3,9 @@
 #include <iostream>
 #include "../Game.hpp"
 //#include "Global.hpp"
-#include "State.hpp"
+#include "BaseState.hpp"
 
-class MainMenuState : public Engine::State
+class MainMenuState : public BaseState
 {
 public:
 	MainMenuState(GameDataRef data);
@@ -17,5 +17,5 @@ public:
 	void drawState(float dt __attribute__((unused)));
 
 private:
-	GameDataRef _data;
+	//GameDataRef _data;
 };

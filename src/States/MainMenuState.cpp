@@ -4,7 +4,7 @@
 //#include "Game.hpp"
 
 MainMenuState::MainMenuState(GameDataRef data) :
-	_data(data)
+	BaseState(data)
 {
 }
 
@@ -34,6 +34,7 @@ void MainMenuState::updateEvents(sf::Event e)
 // marks dt to not warn compiler
 void MainMenuState::updateState(float dt __attribute__((unused)))
 {
+	BaseState::updateState(dt);
 }
 
 // marks dt to not warn compiler
@@ -78,6 +79,7 @@ void MainMenuState::drawState(float dt __attribute__((unused)))
 	// inside the main loop, between window.clear() and window.display()
 	this->_data->window->draw(text);
 
+	BaseState::drawState(dt);
 	// END SAMPLE RENDER CODE
 
 	// Displays rendered obejcts

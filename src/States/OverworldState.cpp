@@ -2,8 +2,10 @@
 #include "BattleState.hpp"
 //#include "Game.hpp"
 
+#include "../Objects/Graphic.hpp"
+
 OverworldState::OverworldState(std::string filename, GameDataRef data) :
-	_data(data)
+	BaseState(data)
 {
     tmx::Map map;
     if(map.load("resources/data/maps/" + filename + ".tmx"))
@@ -54,6 +56,12 @@ void OverworldState::initState()
     sf::View view = this->_data->window->getView();
     view.move(0, 256);
     this->_data->window->setView(view);
+
+    Graphic* face = new Graphic(&this->_data->assets, "resources/img/sprites/faces/sekai.png", 0);
+    face->setUV(0, 0, 106, 106);
+    face->setPosition(4, 16);
+    addObject(face);
+    addObject(new Graphic(&this->_data->assets, "resources/img/sprites/system/battle/player_box.png", 10));
 }
 
 void OverworldState::updateEvents(sf::Event e)
@@ -86,13 +94,15 @@ void OverworldState::updateEvents(sf::Event e)
 // marks dt to not warn compiler
 void OverworldState::updateState(float dt __attribute__((unused)))
 {
-    sf::Time duration = globalClock.restart();
+    sf::Time duration = _clock.restart();
 
     std::vector<Layer*>::iterator itl = mapLayers.begin();
     while (itl != mapLayers.end()) {
         (*itl)->update(duration);
         itl++;
     }
+
+    BaseState::updateState(dt);
 }
 
 // marks dt to not warn compiler
@@ -151,6 +161,8 @@ void OverworldState::drawState(float dt __attribute__((unused)))
             itl++;
         }
     }
+
+    BaseState::drawState(dt);
 
 	// Displays rendered obejcts
 	this->_data->window->display();

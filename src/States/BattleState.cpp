@@ -1,7 +1,7 @@
 #include "BattleState.hpp"
 
 BattleState::BattleState(GameDataRef data) :
-	_data(data),
+	BaseState(data),
 	_render(/*this*/)
 {}
 
@@ -75,6 +75,7 @@ void BattleState::updateEvents(sf::Event e)
 // marks dt to not warn compiler
 void BattleState::updateState(float dt __attribute__((unused)))
 {
+	BaseState::updateState(dt);
 }
 
 // marks dt to not warn compiler
@@ -94,6 +95,8 @@ void BattleState::drawState(float dt __attribute__((unused)))
 
 	this->_render.draw(this->_data->window);
 	//this->_data->assets.getTexture();
+
+	BaseState::drawState(dt);
 
 	//this->_data->window->draw(omoriBox);
 

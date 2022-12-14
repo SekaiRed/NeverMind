@@ -1,10 +1,11 @@
-#include <iostream>
-#include <memory>
-#include <SFML/Graphics.hpp>
+/*#include <iostream>
+//#include <memory>
+#include "GameData.hpp"
+#include "States/MainMenuState.hpp"*/
+/*#include <SFML/Graphics.hpp>
 #include "Engine/StateMachine.hpp"
 #include "Engine/AssetManager.hpp"
-#include "Engine/InputManager.hpp"
-#include "Engine/StateMachine.hpp"
+#include "Engine/InputManager.hpp"*/
 /*#include "Global.hpp"
 #include "Platform/Platform.hpp"*/
 //#include <stdlib>
@@ -12,19 +13,23 @@
 // causes source files to only be loaded once
 #pragma once
 
+#include <iostream>
+#include "GameData.hpp"
+#include "States/MainMenuState.hpp"
+
 /*
 	This class wraps the game engine into its own class.
  */
 
-struct GameData
+/*struct GameData
 {
 	sf::RenderWindow* window;
 	Engine::StateMachine states;
 	Engine::InputManager inputs;
 	Engine::AssetManager assets;
-};
+};*/
 
-typedef std::shared_ptr<GameData> GameDataRef;
+//typedef std::shared_ptr<GameData> GameDataRef;
 class Game
 {
 

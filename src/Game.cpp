@@ -1,6 +1,6 @@
 #include "Game.hpp"
-#include <SFML/Graphics.hpp>
-#include "States/MainMenuState.hpp"
+/*#include <SFML/Graphics.hpp>
+#include "States/MainMenuState.hpp"*/
 /*#include "Engine/StateMachine.hpp"
 #include "States/MainMenuState.hpp"*/
 

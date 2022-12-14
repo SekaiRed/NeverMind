@@ -7,8 +7,8 @@
     "expandedProjectPaths": [
         "maps",
         "template",
-        ".",
-        "tileset"
+        "tileset",
+        "."
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
@@ -43,11 +43,11 @@
             }
         },
         "maps/bedspace.tmx": {
-            "scale": 1,
+            "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 268.5,
-                "y": 111
+                "x": 127,
+                "y": 96.66666666666669
             }
         },
         "maps/test-full.tmj": {

@@ -3,8 +3,13 @@
 #include <stack>
 #include "../States/State.hpp"
 
+class State;
+//class Engine::State;
 namespace Engine
 {
+    class State;
+    //class Engine::State;
+
     typedef std::unique_ptr<State> StateRef;
 
     class StateMachine
