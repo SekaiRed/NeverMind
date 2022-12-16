@@ -2,7 +2,7 @@
 #include "BattleState.hpp"
 //#include "Game.hpp"
 
-#include "../Objects/Graphic.hpp"
+#include "../Objects/Animated.hpp"
 
 OverworldState::OverworldState(std::string filename, GameDataRef data) :
 	BaseState(data)
@@ -10,16 +10,6 @@ OverworldState::OverworldState(std::string filename, GameDataRef data) :
     tmx::Map map;
     if(map.load("resources/data/maps/" + filename + ".tmx"))
     {
-        /*const auto& layers = map.getLayers();
-        for(int i = 0; i < layers.size(); i++) {
-            mapLayers.push_back(MapLayer(map, i));
-        }*/
-        /*const auto& layers = map.getLayers();
-        for(const auto& layer : layers)
-        {
-            std::cout << layer->getName() << "\n";
-        }*/
-        //const auto& layers = map.getLayers();
         const auto& layers = map.getLayers();
         for(int i = 0; i < layers.size(); i++) {
             const auto& layer = layers[i];
@@ -62,6 +52,23 @@ void OverworldState::initState()
     face->setPosition(4, 16);
     addObject(face);
     addObject(new Graphic(&this->_data->assets, "resources/img/sprites/system/battle/player_box.png", 10));
+
+    Graphic* player = new Graphic(&this->_data->assets, "resources/img/sprites/characters/LILY.png", 5);
+    player->setUV(32, 0, 32, 32);
+    player->setPosition(32, 20);
+    addObject(player);
+
+    Animated* player_anim = new Animated(&this->_data->assets, "resources/img/sprites/characters/DW_AUBREY.png", 8);
+    player_anim->setUV(0, 0, 32, 32);
+    player_anim->setPosition(128, 128);
+    player_anim->assignAnimation("resources/data/animation/OW_WALK.json");
+    addObject(player_anim);
+
+    Animated* player_anim_run = new Animated(&this->_data->assets, "resources/img/sprites/characters/DW_AUBREY_RUN.png", 8);
+    player_anim_run->setUV(0, 0, 32, 32);
+    player_anim_run->setPosition(128+64, 128);
+    player_anim_run->assignAnimation("resources/data/animation/OW_RUN.json");
+    addObject(player_anim_run);
 }
 
 void OverworldState::updateEvents(sf::Event e)

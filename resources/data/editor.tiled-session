@@ -6,9 +6,9 @@
     "activeFile": "maps/bedspace.tmx",
     "expandedProjectPaths": [
         "maps",
+        ".",
         "template",
-        "tileset",
-        "."
+        "tileset"
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
@@ -19,16 +19,16 @@
             "scale": 2,
             "selectedLayer": 12,
             "viewCenter": {
-                "x": 384,
-                "y": 383.75
+                "x": 383.75,
+                "y": 251.5
             }
         },
         "maps/alcoholspace.tmx": {
             "scale": 1,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 96,
-                "y": 144.5
+                "x": 96.5,
+                "y": 145
             }
         },
         "maps/apartment.tmx": {
@@ -44,7 +44,7 @@
         },
         "maps/bedspace.tmx": {
             "scale": 1.5,
-            "selectedLayer": 0,
+            "selectedLayer": 3,
             "viewCenter": {
                 "x": 127,
                 "y": 96.66666666666669
@@ -60,15 +60,15 @@
         },
         "maps/test-full.tmx": {
             "expandedObjectLayers": [
-                15,
+                11,
                 10,
-                11
+                15
             ],
             "scale": 1,
-            "selectedLayer": 0,
+            "selectedLayer": 8,
             "viewCenter": {
-                "x": 480,
-                "y": 479.5
+                "x": 479.5,
+                "y": 479
             }
         },
         "maps/test-map.tmx": {

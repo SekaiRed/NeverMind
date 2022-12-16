@@ -51,4 +51,31 @@ namespace Engine
 
 		return this->_fonts.at(name);
 	}
+
+	void AssetManager::loadAnimation(std::string name)
+	{
+		std::cout << "Loaded " << name << "\n";
+
+		Animation animation;
+
+		animation = Loader::loadAnimation(name);
+
+		this->_animations[name] = animation;
+		
+		/*if (font.loadFromFile(name)) {
+			this->_fonts[name] = font;
+		} else {
+			throw NoFileFoundException(name);
+		}*/
+	}
+
+	Animation& AssetManager::getAnimation(std::string name)
+	{
+		if(!this->_animations.count(name))
+			loadAnimation(name);
+		
+		std::cout << "asset" << this->_animations.at(name).getLength() << "\n";
+
+		return this->_animations.at(name);
+	}
 }

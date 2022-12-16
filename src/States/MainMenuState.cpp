@@ -1,6 +1,7 @@
 #include "MainMenuState.hpp"
 #include "OverworldState.hpp"
 #include "BattleState.hpp"
+#include "../Engine/ExternalLoader.hpp"
 //#include "Game.hpp"
 
 MainMenuState::MainMenuState(GameDataRef data) :
@@ -10,6 +11,7 @@ MainMenuState::MainMenuState(GameDataRef data) :
 
 void MainMenuState::initState()
 {
+	//Loader::debug();
 }
 
 void MainMenuState::updateEvents(sf::Event e)
@@ -24,7 +26,7 @@ void MainMenuState::updateEvents(sf::Event e)
 			if (e.key.code == sf::Keyboard::Enter)
 				this->_data->states.addState(Engine::StateRef(new BattleState(this->_data)), false);
 			if (e.key.code == sf::Keyboard::M)
-				this->_data->states.addState(Engine::StateRef(new OverworldState("bedspace", this->_data)), false);
+				this->_data->states.addState(Engine::StateRef(new OverworldState("test-full", this->_data)), false);
 			break;
 		default:
 			break;
