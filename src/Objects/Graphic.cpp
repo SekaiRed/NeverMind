@@ -11,9 +11,14 @@ void Graphic::update(sf::Time elapsed) {
 }
 
 void Graphic::draw(sf::RenderTarget& target, sf::RenderStates states) const {
-    states.transform *= getTransform();
+    //states.transform *= getTransform();
+    states.transform *= getModifiedTransform();
 
     target.draw(spr, states);
+}
+
+sf::Transform Graphic::getModifiedTransform() const {
+    return getTransform();
 }
 
 int Graphic::getZIndex() {

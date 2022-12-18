@@ -6,7 +6,7 @@
 class Animation {
 public:
     struct Frame {
-        std::optional<sf::Time> duration;
+        std::optional<sf::Int64> duration;
         std::optional<int> u;
         std::optional<int> v;
         std::optional<int> w;

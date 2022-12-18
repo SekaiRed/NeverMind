@@ -10,7 +10,7 @@ using json = nlohmann::json;
 namespace Loader {
     static json frameToJson(const Animation::Frame& f) {
         json j;
-        if(f.duration.has_value()) j["delay"] = f.duration.value().asMicroseconds();
+        if(f.duration.has_value()) j["delay"] = f.duration.value();
         if(f.u.has_value()) j["u"] = f.u.value();
         if(f.v.has_value()) j["v"] = f.v.value();
         if(f.w.has_value()) j["w"] = f.w.value();
@@ -25,7 +25,7 @@ namespace Loader {
         //ifj.contains("delay")
         auto jiter = j.begin();
         while (jiter != j.end()) {
-            if(jiter.key() == "delay") f.duration = sf::microseconds(jiter.value().get<unsigned int>());
+            if(jiter.key() == "delay") f.duration = jiter.value().get<sf::Int64>();
             if(jiter.key() == "u") f.u = jiter.value().get<int>();
             if(jiter.key() == "v") f.v = jiter.value().get<int>();
             if(jiter.key() == "w") f.w = jiter.value().get<int>();

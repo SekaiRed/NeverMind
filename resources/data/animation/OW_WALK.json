@@ -1,5 +1,7 @@
 {
     "delay": 20000,
+    "loop": true,
+    "uv_relative": true,
     "frames": [
         {
             "u": 0,

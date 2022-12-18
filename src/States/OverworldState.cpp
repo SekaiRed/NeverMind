@@ -2,7 +2,7 @@
 #include "BattleState.hpp"
 //#include "Game.hpp"
 
-#include "../Objects/Animated.hpp"
+#include "../Objects/Entity.hpp"
 
 OverworldState::OverworldState(std::string filename, GameDataRef data) :
 	BaseState(data)
@@ -69,6 +69,21 @@ void OverworldState::initState()
     player_anim_run->setPosition(128+64, 128);
     player_anim_run->assignAnimation("resources/data/animation/OW_RUN.json");
     addObject(player_anim_run);
+
+    Animated* player_anim_spin = new Animated(&this->_data->assets, "resources/img/sprites/characters/DW_HERO.png", 20);
+    player_anim_spin->setUV(32, 0, 32, 32);
+    player_anim_spin->setPosition(256, 256);
+    player_anim_spin->assignAnimation("resources/data/animation/DEBUG_SPIN.json");
+    addObject(player_anim_spin);
+
+    Entity* big_anim = new Entity(&this->_data->assets, "resources/img/sprites/characters/DW_PLAYGROUND_VAN.png", 4, {8, 8});
+    big_anim->setUV(64, 0, 64, 64);
+    big_anim->setPosition(256, 256);
+    big_anim->setWorldSize({1, 1});
+    /*player_anim_spin->setUV(32, 0, 32, 32);
+    player_anim_spin->setPosition(256, 256);
+    player_anim_spin->assignAnimation("resources/data/animation/DEBUG_SPIN.json");*/
+    addObject(big_anim);
 }
 
 void OverworldState::updateEvents(sf::Event e)
