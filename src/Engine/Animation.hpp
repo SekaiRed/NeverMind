@@ -6,7 +6,10 @@
 class Animation {
 public:
     struct Frame {
-        std::optional<sf::Int64> duration;
+        
+        bool flipX = false;
+        bool flipY = false;
+        std::optional<sf::Int32> duration;
         std::optional<int> u;
         std::optional<int> v;
         std::optional<int> w;
@@ -14,14 +17,20 @@ public:
         std::optional<float> x;
         std::optional<float> y;
     };
-    Animation(sf::Int64 delay = 0);
+    Animation(sf::Int32 delay = 0);
     int getLength();
     Frame getFrame(int i);
-    sf::Int64 getGlobalDuration();
+    sf::Int32 getGlobalDuration();
+    bool usesRelativeUV();
+    bool isLoop();
+    void setLoop(bool loop);
+    void setRelativeUV(bool relativeUV);
     void addFrame(Frame f);
 
 private:
-    sf::Int64 globalDuration;
+    sf::Int32 globalDuration;
+    bool loop = true;
+    bool relativeUV = false;
     std::vector<Frame> frames;
 };
 

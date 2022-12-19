@@ -8,10 +8,6 @@ namespace Engine
 {
 class State
 {
-protected:
-	//GameDataRef _data;
-	sf::Clock _clock;
-	//std::multimap<int, Object*> objects;
 public:
 	// SHOULD BE VIRTUAL
 	State()
@@ -21,8 +17,8 @@ public:
 
 	virtual void initState() = 0;
 	virtual void updateEvents(sf::Event e) = 0;
-	virtual void updateState(float dt) = 0; 
-	virtual void drawState(float dt) = 0;
+	virtual void updateState(sf::Time deltaTime) = 0; 
+	virtual void drawState(sf::Time deltaTime) = 0;
 	//virtual void updateState(float dt) = 0; 
 	/*virtual void updateState(float dt) {
 

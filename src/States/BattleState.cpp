@@ -73,13 +73,13 @@ void BattleState::updateEvents(sf::Event e)
 }
 
 // marks dt to not warn compiler
-void BattleState::updateState(float dt __attribute__((unused)))
+void BattleState::updateState(sf::Time deltaTime)
 {
-	BaseState::updateState(dt);
+	BaseState::updateState(deltaTime);
 }
 
 // marks dt to not warn compiler
-void BattleState::drawState(float dt __attribute__((unused)))
+void BattleState::drawState(sf::Time deltaTime)
 {
 	// just for fun, heres hello world text
 	// SAMPLE RENDER CODE:
@@ -96,7 +96,7 @@ void BattleState::drawState(float dt __attribute__((unused)))
 	this->_render.draw(this->_data->window);
 	//this->_data->assets.getTexture();
 
-	BaseState::drawState(dt);
+	BaseState::drawState(deltaTime);
 
 	//this->_data->window->draw(omoriBox);
 

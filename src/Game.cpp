@@ -42,9 +42,39 @@ void Game::initWindow()
 	//_platform.setIcon(this->_data->window->getSystemHandle());
 
 	// sets FPS vsync
-	this->_data->window->setFramerateLimit(30);
+	//this->_data->window->setFramerateLimit(30);
 	/*window.setFramerateLimit(30);
     window.setVerticalSyncEnabled(false);*/
+}
+
+void Game::processEvent(sf::Event _event) {
+	switch (_event.type) {
+		case sf::Event::Closed:
+			this->_data->window->close();
+			break;
+		case sf::Event::KeyPressed:
+			if (this->_event.key.code == sf::Keyboard::Escape)
+				this->_data->window->close();
+			break;
+		case sf::Event::Resized:
+			float m_initial_aspect_ratio = 4.0f/3.0f;
+			float m_window_width = _event.size.width;
+			float m_window_height = _event.size.height;
+			float new_width = m_initial_aspect_ratio * m_window_height;
+			float new_height = m_window_width / m_initial_aspect_ratio;
+			float offset_width = (m_window_width - new_width) / 2.0;
+			float offset_height = (m_window_height - new_height) / 2.0;
+			//sf::View view = this->_data->window->getDefaultView();
+			sf::View view = this->_data->window->getView();
+			if (m_window_width >= m_initial_aspect_ratio * m_window_height) {
+				view.setViewport(sf::FloatRect(offset_width / m_window_width, 0.0, new_width / m_window_width, 1.0));
+			} else {
+				view.setViewport(sf::FloatRect(0.0, offset_height / m_window_height, 1.0, new_height / m_window_height));
+			}
+
+			this->_data->window->setView(view);
+			break;
+	}
 }
 
 // Constructors
@@ -71,71 +101,20 @@ bool Game::isRunning() const
 
 void Game::run()
 {
-	// initializing a new Game
-
-	// time initialization
-	float newTime, frameTime, interpolation;
-	float currentTime = this->_clock.getElapsedTime().asSeconds();
-	float accumulator = 0.0f;
-
-	//new MainMenuState(_data);
-
 	// Game Loop
 	while (this->isRunning())
 	{
 		this->_data->states.processStates();
 
-		newTime = this->_clock.getElapsedTime().asSeconds();
-		frameTime = newTime - currentTime;
+		//newTime = this->_clock.getElapsedTime().asSeconds();
+		sf::Time deltaTime = this->_clock.restart();//deltaTime
 
-		if (frameTime > 0.25f)
-		{
-			frameTime = 0.25f;
+		while (this->_data->window->pollEvent(_event)) {
+			processEvent(_event);
+			this->_data->states.getActiveState()->updateEvents(_event);
 		}
-
-		currentTime = newTime;
-		accumulator += frameTime;
-
-		while (accumulator >= dt)
-		{
-			while (this->_data->window->pollEvent(_event)) {
-				switch (_event.type) {
-					case sf::Event::Closed:
-						this->_data->window->close();
-						break;
-					case sf::Event::KeyPressed:
-						if (this->_event.key.code == sf::Keyboard::Escape)
-							this->_data->window->close();
-						break;
-					case sf::Event::Resized:
-						float m_initial_aspect_ratio = 4.0f/3.0f;
-						float m_window_width = _event.size.width;
-						float m_window_height = _event.size.height;
-						float new_width = m_initial_aspect_ratio * m_window_height;
-						float new_height = m_window_width / m_initial_aspect_ratio;
-						float offset_width = (m_window_width - new_width) / 2.0;
-						float offset_height = (m_window_height - new_height) / 2.0;
-						//sf::View view = this->_data->window->getDefaultView();
-						sf::View view = this->_data->window->getView();
-						if (m_window_width >= m_initial_aspect_ratio * m_window_height) {
-							view.setViewport(sf::FloatRect(offset_width / m_window_width, 0.0, new_width / m_window_width, 1.0));
-						} else {
-							view.setViewport(sf::FloatRect(0.0, offset_height / m_window_height, 1.0, new_height / m_window_height));
-						}
-
-						this->_data->window->setView(view);
-						break;
-				}
-
-				this->_data->states.getActiveState()->updateEvents(_event);
-			}
-			
-			this->_data->states.getActiveState()->updateState(dt);
-
-			accumulator -= dt;
-		}
-
-		interpolation = accumulator / dt;
-		this->_data->states.getActiveState()->drawState(interpolation);
+		
+		this->_data->states.getActiveState()->updateState(deltaTime);
+		this->_data->states.getActiveState()->drawState(deltaTime);
 	}
 }

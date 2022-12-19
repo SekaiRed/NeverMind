@@ -1,19 +1,37 @@
 #include "BaseState.hpp"
 
-BaseState::BaseState(GameDataRef data) : _data(data) {}
-
-void BaseState::updateState(float dt) {
-    std::multimap<int, Object*>::iterator itr;
-    for (itr = _objects.begin(); itr != _objects.end(); ++itr) {
-        itr->second->update(_clock.getElapsedTime());
-    }
+BaseState::BaseState(GameDataRef data) : _data(data) {
+    fpsFont = data->assets.getFont("resources/fonts/OMORI_GAME2.ttf");
+    fpsCounter.setFont(fpsFont);
+    fpsCounter.setCharacterSize(42);
+	fpsCounter.setFillColor(sf::Color::White);
+	fpsCounter.setStyle(sf::Text::Bold);
+    fpsCounter.setOutlineColor(sf::Color(20, 20, 20));
+    fpsCounter.setOutlineThickness(2);
 }
 
-void BaseState::drawState(float dt) {
+void BaseState::updateState(sf::Time deltaTime) {
+    counter.update(deltaTime);
+
+    std::multimap<int, Object*>::iterator itr;
+    for (itr = _objects.begin(); itr != _objects.end(); ++itr) {
+        itr->second->update(deltaTime);
+    }
+    //_clock.restart();
+}
+
+void BaseState::drawState(sf::Time deltaTime) {
     std::multimap<int, Object*>::iterator itr;
     for (itr = _objects.begin(); itr != _objects.end(); ++itr) {
         _data->window->draw(*(itr->second));
     }
+    
+    fpsCounter.setPosition(
+        this->_data->window->getView().getCenter().x - this->_data->window->getView().getSize().x/2 + 32,
+        this->_data->window->getView().getCenter().y - this->_data->window->getView().getSize().y/2 + 32
+    );
+    fpsCounter.setString(std::to_string(counter.getFPS()));
+    _data->window->draw(fpsCounter);
 }
 
 Object* BaseState::addObject(Object* o) {

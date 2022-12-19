@@ -19,8 +19,8 @@ public:
 
 	void initState();
 	void updateEvents(sf::Event e);
-	void updateState(float dt __attribute__((unused)));
-	void drawState(float dt __attribute__((unused)));
+	void updateState(sf::Time deltaTime);
+	void drawState(sf::Time deltaTime);
 
 	//BattlePlayer* players[12];
 	std::vector<BattlePlayer> players;

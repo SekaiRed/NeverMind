@@ -114,21 +114,21 @@ void OverworldState::updateEvents(sf::Event e)
 }
 
 // marks dt to not warn compiler
-void OverworldState::updateState(float dt __attribute__((unused)))
+void OverworldState::updateState(sf::Time deltaTime)
 {
-    sf::Time duration = _clock.restart();
+    //sf::Time duration = _clock.restart();
 
     std::vector<Layer*>::iterator itl = mapLayers.begin();
     while (itl != mapLayers.end()) {
-        (*itl)->update(duration);
+        (*itl)->update(deltaTime);
         itl++;
     }
 
-    BaseState::updateState(dt);
+    BaseState::updateState(deltaTime);
 }
 
 // marks dt to not warn compiler
-void OverworldState::drawState(float dt __attribute__((unused)))
+void OverworldState::drawState(sf::Time deltaTime)
 {
 	// background color
     this->_data->window->clear(_color);
@@ -184,7 +184,7 @@ void OverworldState::drawState(float dt __attribute__((unused)))
         }
     }
 
-    BaseState::drawState(dt);
+    BaseState::drawState(deltaTime);
 
 	// Displays rendered obejcts
 	this->_data->window->display();

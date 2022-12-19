@@ -34,13 +34,13 @@ void MainMenuState::updateEvents(sf::Event e)
 }
 
 // marks dt to not warn compiler
-void MainMenuState::updateState(float dt __attribute__((unused)))
+void MainMenuState::updateState(sf::Time deltaTime)
 {
-	BaseState::updateState(dt);
+	BaseState::updateState(deltaTime);
 }
 
 // marks dt to not warn compiler
-void MainMenuState::drawState(float dt __attribute__((unused)))
+void MainMenuState::drawState(sf::Time deltaTime)
 {
 	// just for fun, heres hello world text
 	// SAMPLE RENDER CODE:
@@ -81,7 +81,7 @@ void MainMenuState::drawState(float dt __attribute__((unused)))
 	// inside the main loop, between window.clear() and window.display()
 	this->_data->window->draw(text);
 
-	BaseState::drawState(dt);
+	BaseState::drawState(deltaTime);
 	// END SAMPLE RENDER CODE
 
 	// Displays rendered obejcts

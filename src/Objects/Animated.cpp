@@ -1,10 +1,12 @@
 #include "Animated.hpp"
+#include <iostream>
 
 Animated::Animated(Engine::AssetManager* man, std::string filename, int zIndex) : Graphic(man, filename, zIndex) {
     this->man = man;
 }
 
 void Animated::update(sf::Time elapsed) {
+    //std::cout << elapsed.asMicroseconds() << "\n";
     Graphic::update(elapsed);
     player.update(spr, animatedTransform, elapsed);
 }

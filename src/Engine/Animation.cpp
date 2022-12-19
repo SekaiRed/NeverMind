@@ -1,6 +1,6 @@
 #include "Animation.hpp"
 
-Animation::Animation(sf::Int64 delay) {
+Animation::Animation(sf::Int32 delay) {
     globalDuration = delay;
 }
 
@@ -12,8 +12,24 @@ Animation::Frame Animation::getFrame(int i) {
     return frames.at(i);
 }
 
-sf::Int64 Animation::getGlobalDuration() {
+sf::Int32 Animation::getGlobalDuration() {
     return globalDuration;
+}
+
+bool Animation::usesRelativeUV() {
+    return relativeUV;
+}
+
+bool Animation::isLoop() {
+    return loop;
+}
+
+void Animation::setLoop(bool loop) {
+    this->loop = loop;
+}
+
+void Animation::setRelativeUV(bool relativeUV) {
+    this->relativeUV = relativeUV;
 }
 
 void Animation::addFrame(Frame f) {

@@ -44,6 +44,7 @@ private:
 	// Private Functions
 	void initVariables();
 	void initWindow();
+	void processEvent(sf::Event _event);
 
 	// Game Data ref
 	GameDataRef _data = std::make_shared<GameData>();
