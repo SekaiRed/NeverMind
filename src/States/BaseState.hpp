@@ -7,6 +7,7 @@
 class BaseState : public Engine::State {
 public:
     BaseState(GameDataRef data);
+    virtual ~BaseState();
     virtual void updateState(sf::Time deltaTime);
 	virtual void drawState(sf::Time deltaTime);
     Object* addObject(Object* o);

@@ -10,14 +10,41 @@ BaseState::BaseState(GameDataRef data) : _data(data) {
     fpsCounter.setOutlineThickness(2);
 }
 
+BaseState::~BaseState() {
+    std::multimap<int, Object*>::iterator itr = _objects.begin();
+    while(itr != _objects.end()) {
+        delete itr->second;
+    }
+}
+
 void BaseState::updateState(sf::Time deltaTime) {
+    //Update the FPS counter
     counter.update(deltaTime);
 
-    std::multimap<int, Object*>::iterator itr;
-    for (itr = _objects.begin(); itr != _objects.end(); ++itr) {
+    //List of objects I need to add back into the map with an updated key
+    std::vector<Object*> zIndexChanged;
+
+    //Update objects, and update them if they
+    std::multimap<int, Object*>::iterator itr = _objects.begin();
+    while(itr != _objects.end()) {
         itr->second->update(deltaTime);
+
+        if(itr->first == itr->second->getZIndex()) {
+            //zIndex is a match
+            ++itr;
+        } else {
+            //zIndex is different!
+            zIndexChanged.push_back(itr->second);
+            itr = _objects.erase(itr);
+        }
     }
-    //_clock.restart();
+
+    //Add objects for the next frame
+    std::vector<Object*>::iterator itrDel = zIndexChanged.begin();
+    while(itrDel != zIndexChanged.end()) {
+        _objects.insert(std::pair<int, Object*>((*itrDel)->getZIndex(), (*itrDel)));
+        itrDel++;
+    }
 }
 
 void BaseState::drawState(sf::Time deltaTime) {

@@ -6,9 +6,11 @@
 #include <tmxlite/ObjectGroup.hpp>
 
 #include "../Game.hpp"
+#include "BattleState.hpp"
 #include "BaseState.hpp"
 #include "../Graphics/Overworld/MapLayer.hpp"
 #include "../Graphics/Overworld/ImageLayer.hpp"
+#include "../Objects/Entity.hpp"
 
 class OverworldState : public BaseState
 {
@@ -30,4 +32,5 @@ private:
 	sf::Vector2i _size;
 	bool _repeatX = false;
 	bool _repeatY = false;
+	Graphic* player;
 };

@@ -25,6 +25,10 @@ int Graphic::getZIndex() {
     return zIndex;
 }
 
+void Graphic::setZIndex(int zIndex) {
+    this->zIndex = zIndex;
+}
+
 void Graphic::setUV(int u, int v, int w, int h) {
     spr.setTextureRect(sf::IntRect(u, v, w, h));
 }

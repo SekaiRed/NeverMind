@@ -1,8 +1,4 @@
 #include "OverworldState.hpp"
-#include "BattleState.hpp"
-//#include "Game.hpp"
-
-#include "../Objects/Entity.hpp"
 
 OverworldState::OverworldState(std::string filename, GameDataRef data) :
 	BaseState(data)
@@ -53,7 +49,7 @@ void OverworldState::initState()
     addObject(face);
     addObject(new Graphic(&this->_data->assets, "resources/img/sprites/system/battle/player_box.png", 10));
 
-    Graphic* player = new Graphic(&this->_data->assets, "resources/img/sprites/characters/LILY.png", 5);
+    player = new Graphic(&this->_data->assets, "resources/img/sprites/characters/LILY.png", 5);
     player->setUV(32, 0, 32, 32);
     player->setPosition(32, 20);
     addObject(player);
@@ -117,6 +113,7 @@ void OverworldState::updateEvents(sf::Event e)
 void OverworldState::updateState(sf::Time deltaTime)
 {
     //sf::Time duration = _clock.restart();
+    player->setZIndex(-player->getZIndex());
 
     std::vector<Layer*>::iterator itl = mapLayers.begin();
     while (itl != mapLayers.end()) {
