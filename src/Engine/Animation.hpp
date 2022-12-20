@@ -6,9 +6,8 @@
 class Animation {
 public:
     struct Frame {
-        
-        bool flipX = false;
-        bool flipY = false;
+        std::optional<bool> flipX;
+        std::optional<bool> flipY;
         std::optional<sf::Int32> duration;
         std::optional<int> u;
         std::optional<int> v;

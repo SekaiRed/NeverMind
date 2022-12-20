@@ -3,7 +3,7 @@
 BaseState::BaseState(GameDataRef data) : _data(data) {
     fpsFont = data->assets.getFont("resources/fonts/OMORI_GAME2.ttf");
     fpsCounter.setFont(fpsFont);
-    fpsCounter.setCharacterSize(42);
+    fpsCounter.setCharacterSize(20);
 	fpsCounter.setFillColor(sf::Color::White);
 	fpsCounter.setStyle(sf::Text::Bold);
     fpsCounter.setOutlineColor(sf::Color(20, 20, 20));
@@ -54,10 +54,10 @@ void BaseState::drawState(sf::Time deltaTime) {
     }
     
     fpsCounter.setPosition(
-        this->_data->window->getView().getCenter().x - this->_data->window->getView().getSize().x/2 + 32,
-        this->_data->window->getView().getCenter().y - this->_data->window->getView().getSize().y/2 + 32
+        this->_data->window->getView().getCenter().x - this->_data->window->getView().getSize().x/2 + 4,
+        this->_data->window->getView().getCenter().y - this->_data->window->getView().getSize().y/2 - 4
     );
-    fpsCounter.setString(std::to_string(counter.getFPS()));
+    fpsCounter.setString("FPS: " + std::to_string(counter.getFPS()));
     _data->window->draw(fpsCounter);
 }
 

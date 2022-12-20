@@ -76,10 +76,17 @@ void OverworldState::initState()
     big_anim->setUV(64, 0, 64, 64);
     big_anim->setPosition(256, 256);
     big_anim->setWorldSize({1, 1});
-    /*player_anim_spin->setUV(32, 0, 32, 32);
-    player_anim_spin->setPosition(256, 256);
-    player_anim_spin->assignAnimation("resources/data/animation/DEBUG_SPIN.json");*/
     addObject(big_anim);
+
+    Entity* lifejam_guy = new Entity(&this->_data->assets, "resources/img/sprites/characters/lifejam_guy.png", 20, {8, 8});
+    lifejam_guy->setPosition(512, 512);
+    lifejam_guy->setWorldSize({2, 2});
+    lifejam_guy->assignAnimation("resources/data/animation/GEN_FLIP.json");
+    addObject(lifejam_guy);
+
+    auto v = _data->window->getView();
+    v.zoom(1.0f);
+    _data->window->setView(v);
 }
 
 void OverworldState::updateEvents(sf::Event e)

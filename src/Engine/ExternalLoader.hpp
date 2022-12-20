@@ -11,8 +11,8 @@ namespace Loader {
     static json frameToJson(const Animation::Frame& f) {
         json j;
         if(f.duration.has_value()) j["delay"] = f.duration.value();
-        if(f.flipX) j["flipX"] = f.flipX;
-        if(f.flipY) j["flipY"] = f.flipY;
+        if(f.flipX.has_value()) j["flipX"] = f.flipX.value();
+        if(f.flipY.has_value()) j["flipY"] = f.flipY.value();
         if(f.u.has_value()) j["u"] = f.u.value();
         if(f.v.has_value()) j["v"] = f.v.value();
         if(f.w.has_value()) j["w"] = f.w.value();

@@ -5,11 +5,11 @@
     },
     "activeFile": "maps/test-full.tmx",
     "expandedProjectPaths": [
-        "maps",
-        ".",
-        "tileset",
         "template",
-        "animation"
+        ".",
+        "maps",
+        "animation",
+        "tileset"
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
@@ -47,8 +47,8 @@
             "scale": 1.5,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 127,
-                "y": 96.66666666666669
+                "x": 339.3333333333333,
+                "y": 203.66666666666669
             }
         },
         "maps/test-full.tmj": {
@@ -61,15 +61,15 @@
         },
         "maps/test-full.tmx": {
             "expandedObjectLayers": [
-                15,
+                11,
                 10,
-                11
+                15
             ],
-            "scale": 1,
-            "selectedLayer": 8,
+            "scale": 4,
+            "selectedLayer": 9,
             "viewCenter": {
-                "x": 479.5,
-                "y": 479
+                "x": 480,
+                "y": 479.875
             }
         },
         "maps/test-map.tmx": {

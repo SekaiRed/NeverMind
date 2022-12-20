@@ -18,6 +18,7 @@
 #include <map>
 #include <string>
 #include <limits>
+#include <algorithm>
 #include <iostream>
 #include <cmath>
 
@@ -547,14 +548,23 @@ private:
 
     void updateVisibility(const sf::View& view) const
     {
+        //Get the view coordinates
         sf::Vector2f viewCorner = view.getCenter();
         viewCorner -= view.getSize() / 2.f;
 
+        //Get the corners of the visible chunks
         int posX = static_cast<int>(std::floor(viewCorner.x / m_chunkSize.x));
         int posY = static_cast<int>(std::floor(viewCorner.y / m_chunkSize.y));
         int posX2 = static_cast<int>(std::ceil((viewCorner.x + view.getSize().x) / m_chunkSize.x));
-        int posY2 = static_cast<int>(std::ceil((viewCorner.y + view.getSize().x)/ m_chunkSize.y));
+        int posY2 = static_cast<int>(std::ceil((viewCorner.y + view.getSize().y)/ m_chunkSize.y));
 
+        //Clamp to valid values (inside the map)
+        posX = std::clamp(posX, 0, (int)m_chunkCount.x);
+        posX2 = std::clamp(posX2, 0, (int)m_chunkCount.x);
+        posY = std::clamp(posY, 0, (int)m_chunkCount.y);
+        posY2 = std::clamp(posY2, 0, (int)m_chunkCount.y);
+
+        //Fill our visible chunk list
         std::vector<Chunk*> visible;
         for (auto y = posY; y < posY2; ++y)
         {

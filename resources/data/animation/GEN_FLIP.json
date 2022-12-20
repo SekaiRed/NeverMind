@@ -1,0 +1,8 @@
+{
+    "delay": 200,
+    "loop": true,
+    "frames": [
+        {"flipX": false},
+        {"flipX": true}
+    ]
+}

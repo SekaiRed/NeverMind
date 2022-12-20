@@ -12,7 +12,7 @@ void Entity::updateTransform() {
 }
 
 sf::Transform Entity::getModifiedTransform() const {
-    return overworldOffset.getTransform() * Graphic::getModifiedTransform();
+    return overworldOffset.getTransform() * Animated::getModifiedTransform();
 }
 
 void Entity::setUV(int u, int v, int w, int h) {
