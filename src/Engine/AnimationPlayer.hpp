@@ -6,7 +6,7 @@
 
 class AnimationPlayer {
 private:
-    sf::Int32 timer = 0;
+    sf::Time timer = sf::seconds(0);
     Animation current;
     int index = 0;
     bool pause = false;

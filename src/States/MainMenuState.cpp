@@ -2,6 +2,7 @@
 #include "OverworldState.hpp"
 #include "BattleState.hpp"
 #include "../Engine/ExternalLoader.hpp"
+#include "../Objects/Animated.hpp"
 //#include "Game.hpp"
 
 MainMenuState::MainMenuState(GameDataRef data) :
@@ -11,6 +12,13 @@ MainMenuState::MainMenuState(GameDataRef data) :
 
 void MainMenuState::initState()
 {
+	Animated* player_anim = new Animated(&this->_data->assets, "sprites/characters/DW_MARI", 8);
+    player_anim->setUV(0, 0, 32, 32);
+	sf::Vector2u rect = _data->window->getSize();
+    player_anim->setPosition(rect.x/2 - 32/2, rect.y/2 - 32/2);
+    player_anim->assignAnimation("OW_SPIN");
+    addObject(player_anim);
+	//delete player_anim;
 	//Loader::debug();
 }
 
@@ -46,7 +54,7 @@ void MainMenuState::drawState(sf::Time deltaTime)
 	// SAMPLE RENDER CODE:
 
 	// background color
-	this->_data->window->clear(sf::Color::Black);
+	/*this->_data->window->clear(sf::Color::Black);
 
 	// write text
 	sf::Text text;
@@ -79,7 +87,8 @@ void MainMenuState::drawState(sf::Time deltaTime)
 		(this->_data->window->getSize().y / 2) - (text.getLocalBounds().height / 2));
 
 	// inside the main loop, between window.clear() and window.display()
-	this->_data->window->draw(text);
+	this->_data->window->draw(text);*/
+	this->_data->window->clear(sf::Color::Black);
 
 	BaseState::drawState(deltaTime);
 	// END SAMPLE RENDER CODE

@@ -15,6 +15,7 @@ public:
 protected:
     GameDataRef _data;
     std::multimap<int, Object*> _objects;
+    std::vector<Object*> _addingQueue;
     std::vector<Object*> _deleteQueue;
     FPSCounter counter;
     sf::Text fpsCounter;

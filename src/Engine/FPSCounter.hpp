@@ -9,7 +9,7 @@ private:
     int cachedFPS = -1;
     std::vector<float> fpsList;
     sf::Time timer = sf::microseconds(0);
-    const sf::Time limit = sf::seconds(0.25);
+    const sf::Time limit = sf::seconds(0.5);
 public:
     void update(sf::Time deltaTime);
     int getFPS();

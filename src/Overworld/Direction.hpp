@@ -14,5 +14,8 @@ public:
     const static Direction RIGHT;
     const static Direction DOWN;
 	const static std::array<Direction, 4> values;
+	//Direction& operator++();
+	bool operator==(const Direction&) const;
+	Direction();
 	Vec2i getVector();
 };

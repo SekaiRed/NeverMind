@@ -42,7 +42,7 @@ void Game::initWindow()
 	//_platform.setIcon(this->_data->window->getSystemHandle());
 
 	// sets FPS vsync
-	//this->_data->window->setFramerateLimit(30);
+	//this->_data->window->setFramerateLimit(60);
 	/*window.setFramerateLimit(30);
     window.setVerticalSyncEnabled(false);*/
 }
@@ -104,10 +104,9 @@ void Game::run()
 	// Game Loop
 	while (this->isRunning())
 	{
-		this->_data->states.processStates();
+		sf::Time deltaTime = this->_clock.restart();
 
-		//newTime = this->_clock.getElapsedTime().asSeconds();
-		sf::Time deltaTime = this->_clock.restart();//deltaTime
+		this->_data->states.processStates();
 
 		while (this->_data->window->pollEvent(_event)) {
 			processEvent(_event);

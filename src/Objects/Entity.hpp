@@ -11,9 +11,11 @@ private:
     Vec2i worldSize = {1, 1};
     bool isMovementBlocking = true;
     sf::Transformable overworldOffset;
+    sf::Transformable overworldPosition;
     void updateTransform();
 public:
     Entity(Engine::AssetManager* man, std::string filename, int zIndex, Vec2i worldPos);
+    virtual void update(sf::Time elapsed);
     virtual sf::Transform getModifiedTransform() const;
     virtual void setUV(int u, int v, int w, int h);
     void setWorldPos(Vec2i pos);

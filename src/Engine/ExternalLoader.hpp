@@ -55,11 +55,31 @@ namespace Loader {
         Animation a(j["delay"].get<sf::Int64>());
         if(j.contains("loop")) a.setLoop(j.at("loop").get<bool>());
         if(j.contains("uv_relative")) a.setRelativeUV(j.at("uv_relative").get<bool>());
-        auto jiter = j["frames"].begin();
-        while (jiter != j["frames"].end()) {
-            a.addFrame(frameFromJson(jiter.value()));
-            jiter++;
+        if(j.contains("frames")) {
+            auto jiter = j["frames"].begin();
+            while (jiter != j["frames"].end()) {
+                a.addFrame(frameFromJson(jiter.value()));
+                jiter++;
+            }
         }
+        if(j.contains("auto")) {
+            int u = 0, v = 0, w = 1, h = 1, count = 1, limit = -1;
+            if(j["auto"].contains("u")) u = j["auto"].at("u").get<int>();
+            if(j["auto"].contains("v")) v = j["auto"].at("v").get<int>();
+            if(j["auto"].contains("w")) w = j["auto"].at("w").get<int>();
+            if(j["auto"].contains("h")) h = j["auto"].at("h").get<int>();
+            if(j["auto"].contains("count")) count = j["auto"].at("count").get<int>();
+            if(j["auto"].contains("limit")) limit = j["auto"].at("limit").get<int>();
+            for(int i = 0; i < count; i++) {
+                Animation::Frame frame;
+                frame.u = u + w * (i%limit);
+                frame.v = v + h * (i/limit);
+                frame.w = w;
+                frame.h = h;
+                a.addFrame(frame);
+            }
+        }
+        
         return a;
     }
 

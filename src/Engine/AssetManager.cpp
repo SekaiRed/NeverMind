@@ -14,12 +14,12 @@ namespace Engine
 
 		sf::Texture tex;
 
-		if (tex.loadFromFile(name)) {
+		if (tex.loadFromFile("resources/img/" + name + ".png")) {
 			tex.setSmooth(false); // maybe make it an option
 			tex.setRepeated(true);
 			this->_textures[name] = tex;
 		} else {
-			throw NoFileFoundException(name);
+			throw NoFileFoundException("resources/img/" + name + ".png");
 		}
 	}
 
@@ -37,10 +37,10 @@ namespace Engine
 
 		sf::Font font;
 		
-		if (font.loadFromFile(name)) {
+		if (font.loadFromFile("resources/font/" + name + ".ttf")) {
 			this->_fonts[name] = font;
 		} else {
-			throw NoFileFoundException(name);
+			throw NoFileFoundException("resources/font/" + name + ".ttf");
 		}
 	}
 
@@ -58,23 +58,15 @@ namespace Engine
 
 		Animation animation;
 
-		animation = Loader::loadAnimation(name);
+		animation = Loader::loadAnimation("resources/data/animation/" + name + ".json");
 
 		this->_animations[name] = animation;
-		
-		/*if (font.loadFromFile(name)) {
-			this->_fonts[name] = font;
-		} else {
-			throw NoFileFoundException(name);
-		}*/
 	}
 
 	Animation& AssetManager::getAnimation(std::string name)
 	{
 		if(!this->_animations.count(name))
 			loadAnimation(name);
-		
-		std::cout << "asset" << this->_animations.at(name).getLength() << "\n";
 
 		return this->_animations.at(name);
 	}

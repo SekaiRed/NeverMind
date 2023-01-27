@@ -2,7 +2,7 @@
 #include <iostream>
 
 BattleRender::BattleRender() {
-    SpriteRender* spr = new SpriteRender(&rsc, "resources/img/sprites/system/cursor_menu.png");
+    SpriteRender* spr = new SpriteRender(&rsc, "sprites/system/cursor_menu");
     spr->setPosition(128, 128);
     addInstance(spr);
     /*omoriPlayer = BattlePlayer("Omori", "omori", 1, true);

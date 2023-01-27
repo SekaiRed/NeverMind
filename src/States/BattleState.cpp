@@ -7,7 +7,7 @@ BattleState::BattleState(GameDataRef data) :
 
 void BattleState::initState()
 {
-    BattlePlayer omori = BattlePlayer("Omori", "omori", 1, true);
+    /*BattlePlayer omori = BattlePlayer("Omori", "omori", 1, true);
 	players.push_back(omori);
 
 	BattlePlayer aubrey = BattlePlayer("Aubrey", "aubrey", 2, false);
@@ -45,7 +45,9 @@ void BattleState::initState()
 
 	EnemyRender* bnuy = new EnemyRender(&_rsc, "resources/img/sprites/enemies/space_bunny.png");
 	bnuy->setPosition(SCREEN_WIDTH/2 - 146/2, SCREEN_HEIGHT/2 - 202/2 - 40);
-	_render.addInstance(bnuy, 20);
+	_render.addInstance(bnuy, 20);*/
+
+	_data->window->setView(_data->window->getDefaultView());
 }
 
 void BattleState::updateEvents(sf::Event e)
@@ -90,7 +92,7 @@ void BattleState::drawState(sf::Time deltaTime)
 	/*sf::Texture texBg;
     texBg.loadFromFile("resources/img/backgrounds/ow_outskirts.png");*/
     sf::Sprite sprBg;
-    sprBg.setTexture(_rsc.getTexture("resources/img/backgrounds/ow_outskirts.png"));
+    sprBg.setTexture(_rsc.getTexture("backgrounds/ow_outskirts"));
 	this->_data->window->draw(sprBg);
 
 	this->_render.draw(this->_data->window);

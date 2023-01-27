@@ -5,10 +5,10 @@
     },
     "activeFile": "maps/test-full.tmx",
     "expandedProjectPaths": [
-        "template",
-        ".",
         "maps",
+        "template",
         "animation",
+        ".",
         "tileset"
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
@@ -61,15 +61,15 @@
         },
         "maps/test-full.tmx": {
             "expandedObjectLayers": [
-                11,
                 10,
+                11,
                 15
             ],
-            "scale": 4,
+            "scale": 2,
             "selectedLayer": 9,
             "viewCenter": {
-                "x": 480,
-                "y": 479.875
+                "x": 431.25,
+                "y": 448
             }
         },
         "maps/test-map.tmx": {

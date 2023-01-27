@@ -43,46 +43,52 @@ void OverworldState::initState()
     view.move(0, 256);
     this->_data->window->setView(view);
 
-    Graphic* face = new Graphic(&this->_data->assets, "resources/img/sprites/faces/sekai.png", 0);
+    Graphic* face = new Graphic(&this->_data->assets, "sprites/faces/sekai", 0);
     face->setUV(0, 0, 106, 106);
     face->setPosition(4, 16);
     addObject(face);
-    addObject(new Graphic(&this->_data->assets, "resources/img/sprites/system/battle/player_box.png", 10));
+    addObject(new Graphic(&this->_data->assets, "sprites/system/battle/player_box", 10));
 
-    player = new Graphic(&this->_data->assets, "resources/img/sprites/characters/LILY.png", 5);
+    player = new Graphic(&this->_data->assets, "sprites/characters/LILY", 5);
     player->setUV(32, 0, 32, 32);
     player->setPosition(32, 20);
     addObject(player);
 
-    Animated* player_anim = new Animated(&this->_data->assets, "resources/img/sprites/characters/DW_AUBREY.png", 8);
+    Animated* player_anim = new Animated(&this->_data->assets, "sprites/characters/DW_AUBREY", 8);
     player_anim->setUV(0, 0, 32, 32);
     player_anim->setPosition(128, 128);
-    player_anim->assignAnimation("resources/data/animation/OW_WALK.json");
+    player_anim->assignAnimation("OW_WALK");
     addObject(player_anim);
 
-    Animated* player_anim_run = new Animated(&this->_data->assets, "resources/img/sprites/characters/DW_AUBREY_RUN.png", 8);
+    Animated* player_anim_run = new Animated(&this->_data->assets, "sprites/characters/DW_AUBREY_RUN", 8);
     player_anim_run->setUV(0, 0, 32, 32);
     player_anim_run->setPosition(128+64, 128);
-    player_anim_run->assignAnimation("resources/data/animation/OW_RUN.json");
+    player_anim_run->assignAnimation("OW_RUN");
     addObject(player_anim_run);
 
-    Animated* player_anim_spin = new Animated(&this->_data->assets, "resources/img/sprites/characters/DW_HERO.png", 20);
+    Animated* player_anim_spin = new Animated(&this->_data->assets, "sprites/characters/DW_HERO", 20);
     player_anim_spin->setUV(32, 0, 32, 32);
     player_anim_spin->setPosition(256, 256);
-    player_anim_spin->assignAnimation("resources/data/animation/DEBUG_SPIN.json");
+    player_anim_spin->assignAnimation("DEBUG_SPIN");
     addObject(player_anim_spin);
 
-    Entity* big_anim = new Entity(&this->_data->assets, "resources/img/sprites/characters/DW_PLAYGROUND_VAN.png", 4, {8, 8});
+    Entity* big_anim = new Entity(&this->_data->assets, "sprites/characters/DW_PLAYGROUND_VAN", 4, {20, 8});
     big_anim->setUV(64, 0, 64, 64);
-    big_anim->setPosition(256, 256);
+    //big_anim->setPosition(256, 256);
     big_anim->setWorldSize({1, 1});
     addObject(big_anim);
 
-    Entity* lifejam_guy = new Entity(&this->_data->assets, "resources/img/sprites/characters/lifejam_guy.png", 20, {8, 8});
-    lifejam_guy->setPosition(512, 512);
+    Entity* lifejam_guy = new Entity(&this->_data->assets, "sprites/characters/lifejam_guy", 20, {19, 17});
+    //lifejam_guy->setPosition(512, 512);
     lifejam_guy->setWorldSize({2, 2});
-    lifejam_guy->assignAnimation("resources/data/animation/GEN_FLIP.json");
+    lifejam_guy->assignAnimation("GEN_FLIP");
     addObject(lifejam_guy);
+
+    Entity* lifejam_guy2 = new Entity(&this->_data->assets, "sprites/characters/lifejam_guy", 20, {33, 17});
+    //lifejam_guy->setPosition(512, 512);
+    lifejam_guy2->setWorldSize({2, 2});
+    lifejam_guy2->assignAnimation("GEN_FLIP");
+    addObject(lifejam_guy2);
 
     auto v = _data->window->getView();
     v.zoom(1.0f);
@@ -93,6 +99,15 @@ void OverworldState::updateEvents(sf::Event e)
 {
     sf::View v = this->_data->window->getView();
 	switch (e.type) {
+        case sf::Event::MouseButtonPressed:
+            if(sf::Mouse::Left == e.mouseButton.button) {
+                sf::Vector2f target = this->_data->window->mapPixelToCoords({e.mouseButton.x, e.mouseButton.y});
+                Animated* hey_anim = new Animated(&this->_data->assets, "sprites/animations/painful_truth", 8);
+                hey_anim->setPosition(target.x, target.y);
+                hey_anim->assignAnimation("BTL_PAINFUL_TRUTH");
+                addObject(hey_anim);
+            }
+            break;
         case sf::Event::Closed:
             this->_data->window->close();
             break;
@@ -121,6 +136,12 @@ void OverworldState::updateState(sf::Time deltaTime)
 {
     //sf::Time duration = _clock.restart();
     player->setZIndex(-player->getZIndex());
+
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+        this->_data->window->setFramerateLimit(60);
+    } else {
+        this->_data->window->setFramerateLimit(0);
+    }
 
     std::vector<Layer*>::iterator itl = mapLayers.begin();
     while (itl != mapLayers.end()) {

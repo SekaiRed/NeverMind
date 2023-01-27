@@ -5,6 +5,11 @@ Entity::Entity(Engine::AssetManager* man, std::string filename, int zIndex, Vec2
     updateTransform();
 }
 
+void Entity::update(sf::Time elapsed) {
+    overworldPosition.setPosition(sf::Vector2f(worldPos.x, worldPos.y) * static_cast<float>(TEMP_TILE_SIZE));
+    Animated::update(elapsed);
+}
+
 void Entity::updateTransform() {
     overworldOffset.setPosition(0, 0);
     overworldOffset.setOrigin(spr.getLocalBounds().width/2, spr.getLocalBounds().height);
@@ -12,7 +17,7 @@ void Entity::updateTransform() {
 }
 
 sf::Transform Entity::getModifiedTransform() const {
-    return overworldOffset.getTransform() * Animated::getModifiedTransform();
+    return overworldPosition.getTransform() * overworldOffset.getTransform() * Animated::getModifiedTransform();
 }
 
 void Entity::setUV(int u, int v, int w, int h) {
