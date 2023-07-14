@@ -1,17 +1,17 @@
 #include "AnimationPlayer.hpp"
 
-void AnimationPlayer::update(sf::Sprite& spr, sf::Transformable& transform, sf::Time elapsed) {
-    if(pause || current.getLength() == 0)
+void AnimationPlayer::update(sf::Sprite& spr, sf::Transformable& transform, sf::Time elapsed, sf::Vector2i uvOffset) {
+    if(pause || animation.getLength() == 0)
         return;
 
-    Animation::Frame frame = current.getFrame(index);
+    Animation::Frame frame = animation.getFrame(index);
 
     sf::IntRect rect = spr.getTextureRect();
-    rect.left = frame.u.value_or(rect.left);
-    rect.top = frame.v.value_or(rect.top);
+    rect.left = frame.u.value_or(rect.left) + uvOffset.x;
+    rect.top = frame.v.value_or(rect.top) + uvOffset.y;
     rect.width = frame.w.value_or(rect.width);
     rect.height = frame.h.value_or(rect.height);
-    if(current.usesRelativeUV()) {
+    if(animation.usesRelativeUV()) {
         rect.left *= rect.width;
         rect.top *= rect.height;
     }
@@ -39,16 +39,19 @@ void AnimationPlayer::update(sf::Sprite& spr, sf::Transformable& transform, sf::
         timer-= sf::milliseconds(getDuration());
 
         index++;
-        if(index >= current.getLength())
+        if(index >= animation.getLength()) {
             index = 0;
+            if(!animation.isLoop())
+                stop(); //If we're not meant to loop then pause it
+        }
     }
 }
 
 sf::Int32 AnimationPlayer::getDuration() {
-    if(current.getFrame(index).duration.has_value())
-        return current.getFrame(index).duration.value();
+    if(animation.getFrame(index).duration.has_value())
+        return animation.getFrame(index).duration.value();
     else
-        return current.getGlobalDuration();
+        return animation.getGlobalDuration();
 }
 
 void AnimationPlayer::play() {
@@ -64,7 +67,7 @@ bool AnimationPlayer::isPlaying() {
 }
 
 void AnimationPlayer::change(Animation anim) {
-    current = anim;
+    animation = anim;
     index = 0;
     timer = sf::seconds(0);
     play();

@@ -1,0 +1,11 @@
+{
+    "delay": 1,
+    "loop": false,
+    "uv_relative": true,
+    "frames": [
+        {
+            "u": 0,
+            "v": 0
+        }
+    ]
+}

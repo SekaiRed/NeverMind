@@ -91,18 +91,10 @@ void BaseState::drawState(sf::Time deltaTime) {
 }
 
 Object* BaseState::addObject(Object* o) {
-    //_objects.insert(std::pair<int, Object*>(o->getZIndex(), o));
     _addingQueue.push_back(o);
     return o;
 }
 
 void BaseState::removeObject(Object* o) {
-    /*std::multimap<int, Object*>::iterator itr;
-    for (itr = _objects.begin(); itr != _objects.end(); ++itr) {
-        if(itr->second == o) {
-            itr = _objects.erase(itr); //Remove every entry with this pointer
-        }
-    }
-    delete o;*/ //It is now safe to delete
     _deleteQueue.push_back(o);
 }

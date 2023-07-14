@@ -8,7 +8,7 @@ Animated::Animated(Engine::AssetManager* man, std::string filename, int zIndex) 
 void Animated::update(sf::Time elapsed) {
     //std::cout << elapsed.asMicroseconds() << "\n";
     Graphic::update(elapsed);
-    player.update(spr, animatedTransform, elapsed);
+    player.update(spr, animatedTransform, elapsed, offset);
 }
 
 sf::Transform Animated::getModifiedTransform() const {
@@ -17,4 +17,8 @@ sf::Transform Animated::getModifiedTransform() const {
 
 void Animated::assignAnimation(std::string filename) {
     player.change(man->getAnimation(filename));
+}
+
+void Animated::setUVOffset(sf::Vector2i offset) {
+    this->offset = offset;
 }

@@ -38,6 +38,7 @@ namespace Engine
 		sf::Font font;
 		
 		if (font.loadFromFile("resources/font/" + name + ".ttf")) {
+			font.setSmooth(false);
 			this->_fonts[name] = font;
 		} else {
 			throw NoFileFoundException("resources/font/" + name + ".ttf");

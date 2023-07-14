@@ -43,9 +43,11 @@ void OverworldState::initState()
     view.move(0, 256);
     this->_data->window->setView(view);
 
-    Graphic* face = new Graphic(&this->_data->assets, "sprites/faces/sekai", 0);
+    Animated* face = new Animated(&this->_data->assets, "sprites/faces/sekai", 0);
     face->setUV(0, 0, 106, 106);
     face->setPosition(4, 16);
+    face->assignAnimation("BTL_FACE");
+    face->setUVOffset({0, 11});
     addObject(face);
     addObject(new Graphic(&this->_data->assets, "sprites/system/battle/player_box", 10));
 
@@ -84,11 +86,11 @@ void OverworldState::initState()
     lifejam_guy->assignAnimation("GEN_FLIP");
     addObject(lifejam_guy);
 
-    Entity* lifejam_guy2 = new Entity(&this->_data->assets, "sprites/characters/lifejam_guy", 20, {33, 17});
+    /*Entity* lifejam_guy2 = new Entity(&this->_data->assets, "sprites/characters/lifejam_guy", 20, {33, 17});
     //lifejam_guy->setPosition(512, 512);
     lifejam_guy2->setWorldSize({2, 2});
     lifejam_guy2->assignAnimation("GEN_FLIP");
-    addObject(lifejam_guy2);
+    addObject(lifejam_guy2);*/
 
     auto v = _data->window->getView();
     v.zoom(1.0f);
@@ -170,6 +172,11 @@ void OverworldState::drawState(sf::Time deltaTime)
                 extendedMapTexture.draw(**itl);
             }
             itl++;
+        }
+        std::multimap<int, Object*>::iterator itr;
+        for (itr = _objects.begin(); itr != _objects.end(); ++itr) {
+            /*_data->window->draw(*(itr->second));*/
+            extendedMapTexture.draw(*(itr->second));
         }
         extendedMapTexture.display();
 

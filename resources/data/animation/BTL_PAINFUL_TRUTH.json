@@ -1,5 +1,6 @@
 {
     "delay": 100,
+    "loop": false,
     "auto": {
         "u": 0,
         "v": 0,

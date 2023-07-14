@@ -35,6 +35,12 @@ void MainMenuState::updateEvents(sf::Event e)
 				this->_data->states.addState(Engine::StateRef(new BattleState(this->_data)), false);
 			if (e.key.code == sf::Keyboard::M)
 				this->_data->states.addState(Engine::StateRef(new OverworldState("test-full", this->_data)), false);
+			if (e.key.code == sf::Keyboard::W)
+				this->_data->states.addState(Engine::StateRef(new OverworldState("whitespace", this->_data)), false);
+			if (e.key.code == sf::Keyboard::A)
+				this->_data->states.addState(Engine::StateRef(new OverworldState("alcoholspace", this->_data)), false);
+			if (e.key.code == sf::Keyboard::Z)
+				this->_data->states.addState(Engine::StateRef(new OverworldState("apartment", this->_data)), false);
 			break;
 		default:
 			break;
