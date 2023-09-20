@@ -1,5 +1,7 @@
 #include "StateMachine.hpp"
 
+#include <iostream>
+
 namespace Engine
 {
     void StateMachine::addState(StateRef newState, bool isReplacing)
@@ -19,7 +21,9 @@ namespace Engine
     {
         if (this->_isRemoving && !this->_states.empty())
         {
+            std::cout << this->_states.empty() << "\n";
             this->_states.pop();
+            std::cout << this->_states.empty() << "\n";
 
             if (!this->_states.empty())
             {

@@ -74,14 +74,16 @@ void OverworldState::initState()
     player_anim_spin->assignAnimation("DEBUG_SPIN");
     addObject(player_anim_spin);
 
-    Entity* big_anim = new Entity(&this->_data->assets, "sprites/characters/DW_PLAYGROUND_VAN", 4, {20, 8});
+    Entity* big_anim = new Entity(&this->_data->assets, "sprites/characters/DW_PLAYGROUND_VAN", 4);
+    big_anim->setWorldPos({20, 8});
     big_anim->setUV(64, 0, 64, 64);
     //big_anim->setPosition(256, 256);
     big_anim->setWorldSize({1, 1});
     addObject(big_anim);
 
-    Entity* lifejam_guy = new Entity(&this->_data->assets, "sprites/characters/lifejam_guy", 20, {19, 17});
+    Entity* lifejam_guy = new Entity(&this->_data->assets, "sprites/characters/lifejam_guy", 20);
     //lifejam_guy->setPosition(512, 512);
+    lifejam_guy->setWorldPos({19, 17});
     lifejam_guy->setWorldSize({2, 2});
     lifejam_guy->assignAnimation("GEN_FLIP");
     addObject(lifejam_guy);

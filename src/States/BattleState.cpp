@@ -64,7 +64,11 @@ void BattleState::updateEvents(sf::Event e)
 				std::cout << players.at(0).getInfo()->getName() << "\n";
 			}
 			if (e.key.code == sf::Keyboard::Q) {
+				std::cout << "lol" << "\n";
 				this->_data->states.removeState();
+			}
+			if (e.key.code == sf::Keyboard::N) {
+				std::cout << "lol" << "\n";
 			}
 			/*if (e.key.code == sf::Keyboard::Enter)
 				this->_data->states.addState(Engine::StateRef(new MainMenuState(this->_data)), false);*/

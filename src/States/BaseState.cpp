@@ -68,7 +68,7 @@ void BaseState::updateState(sf::Time deltaTime) {
         }
     }
 
-    //Add objects for the next frame
+    //Add objects for the next frame that changed z-index
     std::vector<Object*>::iterator itrDel = zIndexChanged.begin();
     while(itrDel != zIndexChanged.end()) {
         _objects.insert(std::pair<int, Object*>((*itrDel)->getZIndex(), (*itrDel)));

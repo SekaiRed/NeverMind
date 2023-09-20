@@ -13,7 +13,7 @@ private:
     bool moving;
 
 public:
-    Actor(Engine::AssetManager* man, std::string filename, int zIndex, Vec2i worldPos, IBlocking* world);
+    Actor(Engine::AssetManager* man, std::string filename, int zIndex, IBlocking* world);
     virtual void update(sf::Time elapsed);
     virtual sf::Transform getModifiedTransform() const;
     
