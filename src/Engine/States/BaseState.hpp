@@ -1,8 +1,8 @@
 #pragma once
 
 #include "State.hpp"
-#include "../GameData.hpp"
-#include "../Engine/FPSCounter.hpp"
+#include "../../GameData.hpp"
+#include "../../Engine/FPSCounter.hpp"
 
 class BaseState : public Engine::State {
 public:

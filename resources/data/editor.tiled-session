@@ -3,16 +3,27 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "maps/test-full.tmx",
+    "activeFile": "C:/Users/Stéphane/Desktop/NeverMind/resources/data/maps/bedspace.tmx",
     "expandedProjectPaths": [
+        "animation",
         "maps",
         "template",
-        "animation",
         ".",
         "tileset"
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
+        "C:/Users/Stéphane/Desktop/NeverMind/resources/data/maps/bedspace.tmx": {
+            "scale": 1.2074374079528718,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 339.97621516131005,
+                "y": 204.5654692931634
+            }
+        },
+        "C:/Users/Stéphane/Desktop/NeverMind/resources/data/tileset/FA_InteriorTileset.tsx": {
+            "scaleInDock": 1
+        },
         "maps/DEBUG.tmx": {
             "expandedObjectLayers": [
                 7
@@ -61,15 +72,15 @@
         },
         "maps/test-full.tmx": {
             "expandedObjectLayers": [
-                10,
+                15,
                 11,
-                15
+                10
             ],
-            "scale": 2,
+            "scale": 1,
             "selectedLayer": 9,
             "viewCenter": {
-                "x": 431.25,
-                "y": 448
+                "x": 336,
+                "y": 478.5
             }
         },
         "maps/test-map.tmx": {
@@ -137,23 +148,24 @@
         "maps/apartment.tmx",
         "maps/DEBUG.tmx",
         "maps/alcoholspace.tmx",
-        "maps/bedspace.tmx"
+        "maps/bedspace.tmx",
+        "C:/Users/Stéphane/Desktop/NeverMind/resources/data/maps/bedspace.tmx"
     ],
     "project": "editor.tiled-project",
     "property.type": "bool",
     "recentFiles": [
-        "maps/bedspace.tmx",
-        "maps/alcoholspace.tmx",
-        "maps/DEBUG.tmx",
-        "maps/apartment.tmx",
-        "maps/whitespace.tmx",
         "maps/test-full.tmx",
+        "maps/whitespace.tmx",
+        "maps/apartment.tmx",
+        "maps/DEBUG.tmx",
+        "maps/alcoholspace.tmx",
+        "maps/bedspace.tmx",
+        "C:/Users/Stéphane/Desktop/NeverMind/resources/data/maps/bedspace.tmx",
         "maps/test-map.tmx",
         "maps/test-full.tmj",
         "tileset/whitespace.tsx",
         "tileset/DW_TreeStump_anim.tsx",
-        "tileset/flags.tsx",
-        "tileset/terrain.tsx"
+        "tileset/flags.tsx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.transparentColor": "#a49b82",

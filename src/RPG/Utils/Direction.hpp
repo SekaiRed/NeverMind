@@ -1,7 +1,7 @@
 #pragma once
 
 #include <array>
-#include "../Engine/Vec2i.hpp"
+#include "../../Engine/Vec2i.hpp"
 
 class Direction {
 private:

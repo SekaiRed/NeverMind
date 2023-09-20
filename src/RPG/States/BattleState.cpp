@@ -1,8 +1,7 @@
 #include "BattleState.hpp"
 
 BattleState::BattleState(GameDataRef data) :
-	BaseState(data),
-	_render(/*this*/)
+	BaseState(data)
 {}
 
 void BattleState::initState()
@@ -59,10 +58,10 @@ void BattleState::updateEvents(sf::Event e)
 		case sf::Event::KeyPressed:
 			if (e.key.code == sf::Keyboard::Escape)
 				this->_data->window->close();
-			if (e.key.code == sf::Keyboard::A) {
+			/*if (e.key.code == sf::Keyboard::A) {
 				std::cout << players.size() << "\n";
 				std::cout << players.at(0).getInfo()->getName() << "\n";
-			}
+			}*/
 			if (e.key.code == sf::Keyboard::Q) {
 				std::cout << "lol" << "\n";
 				this->_data->states.removeState();
@@ -99,7 +98,7 @@ void BattleState::drawState(sf::Time deltaTime)
     sprBg.setTexture(_rsc.getTexture("backgrounds/ow_outskirts"));
 	this->_data->window->draw(sprBg);
 
-	this->_render.draw(this->_data->window);
+	//this->_render.draw(this->_data->window);
 	//this->_data->assets.getTexture();
 
 	BaseState::drawState(deltaTime);

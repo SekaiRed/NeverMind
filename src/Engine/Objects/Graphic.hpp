@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Object.hpp"
-#include "../Engine/AssetManager.hpp"
+#include "../AssetManager.hpp"
 
 class Graphic : public Object {
 public:

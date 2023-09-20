@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Graphic.hpp"
-#include "../Engine/AnimationPlayer.hpp"
+#include "../AnimationPlayer.hpp"
 
 class Animated : public Graphic {
 public:

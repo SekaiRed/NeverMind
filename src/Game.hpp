@@ -15,7 +15,7 @@
 
 #include <iostream>
 #include "GameData.hpp"
-#include "States/MainMenuState.hpp"
+#include "RPG/States/MainMenuState.hpp"
 
 /*
 	This class wraps the game engine into its own class.

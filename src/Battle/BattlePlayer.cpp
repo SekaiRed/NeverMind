@@ -12,7 +12,7 @@ Emotion* BattlePlayer::getEmotion() {
     return emotion;
 }
 bool BattlePlayer::setEmotion(Emotion* emotion) {
-    if(emotion == &Emotion::MANIC || emotion == &Emotion::MISERABLE || emotion == &Emotion::FURIOUS) {
+    if(emotion->isSpecial()) {
         if(info.hasSpecialEmotion()) {
             this->emotion = emotion;
             return true;

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Animated.hpp"
-#include "../Engine/Vec2i.hpp"
-#include "../Overworld/Constant.hpp"
+#include "../../Engine/Objects/Animated.hpp"
+#include "../../Engine/Vec2i.hpp"
+#include "../Utils/Constant.hpp"
 
 //#define TEMP_TILE_SIZE 32
 

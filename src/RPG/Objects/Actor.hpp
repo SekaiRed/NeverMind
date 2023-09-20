@@ -1,8 +1,8 @@
 #pragma once
 
 #include "Entity.hpp"
-#include "../Overworld/Direction.hpp"
-#include "../Overworld/IBlocking.hpp"
+#include "../Utils/Direction.hpp"
+#include "../IBlocking.hpp"
 
 class Actor : public Entity {
 private:

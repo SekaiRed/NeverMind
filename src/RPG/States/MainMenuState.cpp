@@ -1,8 +1,8 @@
 #include "MainMenuState.hpp"
 #include "OverworldState.hpp"
 #include "BattleState.hpp"
-#include "../Engine/ExternalLoader.hpp"
-#include "../Objects/Animated.hpp"
+#include "../../Engine/ExternalLoader.hpp"
+#include "../../Engine/Objects/Animated.hpp"
 //#include "Game.hpp"
 
 MainMenuState::MainMenuState(GameDataRef data) :

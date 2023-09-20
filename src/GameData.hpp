@@ -2,9 +2,9 @@
 
 #include <memory>
 #include <SFML/Graphics.hpp>
-#include "Engine/StateMachine.hpp"
-#include "Engine/AssetManager.hpp"
-#include "Engine/InputManager.hpp"
+#include "./Engine/StateMachine.hpp"
+#include "./Engine/AssetManager.hpp"
+#include "./Engine/InputManager.hpp"
 
 struct GameData
 {
