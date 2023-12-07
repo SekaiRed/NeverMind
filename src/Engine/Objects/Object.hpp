@@ -12,4 +12,5 @@ public:
     virtual void update(sf::Time elapsed) = 0;
     virtual void draw(sf::RenderTarget& rt, sf::RenderStates states) const override = 0;
     virtual int getZIndex() = 0;
+    virtual sf::FloatRect getBounds() = 0;
 };

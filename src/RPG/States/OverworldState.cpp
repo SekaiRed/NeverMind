@@ -40,27 +40,52 @@ OverworldState::OverworldState(std::string filename, GameDataRef data) :
 void OverworldState::initState()
 {
     sf::View view = this->_data->window->getView();
-    view.move(0, 256);
+    //view.move(0, 256);
     this->_data->window->setView(view);
 
-    Animated* face = new Animated(&this->_data->assets, "sprites/faces/sekai", 0);
+    /*Animated* face = new Animated(&this->_data->assets, "sprites/faces/sekai", 0);
     face->setUV(0, 0, 106, 106);
     face->setPosition(4, 16);
     face->assignAnimation("BTL_FACE");
-    face->setUVOffset({0, 11});
+    face->setUVOffset({0, 3});
     addObject(face);
-    addObject(new Graphic(&this->_data->assets, "sprites/system/battle/player_box", 10));
+    addObject(new Graphic(&this->_data->assets, "sprites/system/battle/player_box", 10));*/
 
-    player = new Graphic(&this->_data->assets, "sprites/characters/LILY", 5);
+    /*player = new Graphic(&this->_data->assets, "sprites/characters/LILY", 5);
     player->setUV(32, 0, 32, 32);
     player->setPosition(32, 20);
-    addObject(player);
+    addObject(player);*/
 
-    Animated* player_anim = new Animated(&this->_data->assets, "sprites/characters/DW_AUBREY", 8);
+    /*player = new Actor(&this->_data->assets, "sprites/characters/LILY", 1, this);
+    player->setWorldPos({4,4});
+    player->setUV(32, 0, 32, 32);
+    addEntity(player);*/
+    player = new Actor(&this->_data->assets, "sprites/characters/DW_PLAYGROUND_VAN", 1, this);
+    player->setWorldPos({1,1});
+    player->setWorldSize({2,2});
+    player->setUV(64, 0, 64, 64);
+    addEntity(player);
+    /*player = new Actor(&this->_data->assets, "sprites/characters/DW_AUBREY_RUN", 5, this);
+    player->setWorldPos({4,4});
+    //player->setUV(32, 0, 32, 33);
+    player->setIdleAnimation("OW_RUN_IDLE");
+    player->setWalkAnimation("OW_RUN");
+    player->setUV(0,0,32,33);
+    player->assignAnimation("OW_RUN_IDLE");
+    addEntity(player);*/
+
+    /*Animated* player_anim = new Animated(&this->_data->assets, "sprites/characters/DW_AUBREY", 8);
     player_anim->setUV(0, 0, 32, 32);
     player_anim->setPosition(128, 128);
     player_anim->assignAnimation("OW_WALK");
-    addObject(player_anim);
+    addObject(player_anim);*/
+    /*Actor* player_anim = new Actor(&this->_data->assets, "sprites/characters/DW_AUBREY", 8, this);
+    player_anim->setWorldPos({4, 3});
+    player_anim->setUV(0, 0, 32, 32);
+    player_anim->assignAnimation("OW_WALK");
+    //addObject(player_anim);
+    addEntity(player_anim);*/
+
 
     Animated* player_anim_run = new Animated(&this->_data->assets, "sprites/characters/DW_AUBREY_RUN", 8);
     player_anim_run->setUV(0, 0, 32, 32);
@@ -74,12 +99,12 @@ void OverworldState::initState()
     player_anim_spin->assignAnimation("DEBUG_SPIN");
     addObject(player_anim_spin);
 
-    Entity* big_anim = new Entity(&this->_data->assets, "sprites/characters/DW_PLAYGROUND_VAN", 4);
+    /*Entity* big_anim = new Entity(&this->_data->assets, "sprites/characters/DW_PLAYGROUND_VAN", 4);
     big_anim->setWorldPos({20, 8});
     big_anim->setUV(64, 0, 64, 64);
     //big_anim->setPosition(256, 256);
     big_anim->setWorldSize({1, 1});
-    addObject(big_anim);
+    addObject(big_anim);*/
 
     Entity* lifejam_guy = new Entity(&this->_data->assets, "sprites/characters/lifejam_guy", 20);
     //lifejam_guy->setPosition(512, 512);
@@ -116,18 +141,34 @@ void OverworldState::updateEvents(sf::Event e)
             this->_data->window->close();
             break;
         case sf::Event::KeyPressed:
-            if (e.key.code == sf::Keyboard::Enter)
+            if (e.key.code == sf::Keyboard::Enter) {
                 this->_data->states.addState(Engine::StateRef(new BattleState(this->_data)), false);
+                break;
+            }
 
-            if (e.key.code == sf::Keyboard::Down)
+            /*if (e.key.code == sf::Keyboard::Down) {
+                player->move(Direction::DOWN, 200);
+            } else if (e.key.code == sf::Keyboard::Up) {
+                player->move(Direction::UP, 200);
+            } else if (e.key.code == sf::Keyboard::Left) {
+                player->move(Direction::LEFT, 200);
+            } else if (e.key.code == sf::Keyboard::Right) {
+                player->move(Direction::RIGHT, 200);
+            }*/
+
+            if (e.key.code == sf::Keyboard::Numpad2) {
                 v.move(0, 32);
-            if (e.key.code == sf::Keyboard::Up)
+                this->_data->window->setView(v);
+            } else if (e.key.code == sf::Keyboard::Numpad8) {
                 v.move(0, -32);
-            if (e.key.code == sf::Keyboard::Left)
+                this->_data->window->setView(v);
+            } else if (e.key.code == sf::Keyboard::Numpad4) {
                 v.move(-32, 0);
-            if (e.key.code == sf::Keyboard::Right)
+                this->_data->window->setView(v);
+            } else if (e.key.code == sf::Keyboard::Numpad6) {
                 v.move(32, 0);
-            this->_data->window->setView(v);
+                this->_data->window->setView(v);
+            }
                 
             break;
         default:
@@ -138,7 +179,24 @@ void OverworldState::updateEvents(sf::Event e)
 // marks dt to not warn compiler
 void OverworldState::updateState(sf::Time deltaTime)
 {
+    /*if(sf::Keyboard::isKeyPressed(sf::Keyboard::LAlt)) {
+        player->setSprite(&this->_data->assets, "sprites/characters/DW_AUBREY_RUN");
+    } else {
+
+    }*/
+
     //sf::Time duration = _clock.restart();
+    int moveSpeed = 300; //300;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+        player->move(Direction::DOWN, moveSpeed);
+    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+        player->move(Direction::UP, moveSpeed);
+    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+        player->move(Direction::LEFT, moveSpeed);
+    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+        player->move(Direction::RIGHT, moveSpeed);
+    }
+
     player->setZIndex(-player->getZIndex());
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
@@ -163,10 +221,13 @@ void OverworldState::drawState(sf::Time deltaTime)
     this->_data->window->clear(_color);
 
     //std::cout << _repeatX << _repeatY << "\n";
+    // if we're repeating
     if(_repeatX || _repeatY) {
-        sf::RenderTexture extendedMapTexture;;
+        // create a render texture to render our map to
+        sf::RenderTexture extendedMapTexture;
         extendedMapTexture.create(_size.x, _size.y);
         
+        // render layers to it normally (skip images, to maybe remplace with skipping repeating images)
         std::vector<Layer*>::iterator itl = mapLayers.begin();
         while (itl != mapLayers.end()) {
             this->_data->window->draw(**itl);
@@ -178,7 +239,58 @@ void OverworldState::drawState(sf::Time deltaTime)
         std::multimap<int, Object*>::iterator itr;
         for (itr = _objects.begin(); itr != _objects.end(); ++itr) {
             /*_data->window->draw(*(itr->second));*/
-            extendedMapTexture.draw(*(itr->second));
+            Object* obj = itr->second;
+            //extendedMapTexture.draw(*(itr->second));
+            extendedMapTexture.draw(*obj);
+            //std::cout << obj->getBounds().left << ", " << obj->getBounds().top << std::endl;
+            //if((*(itr->second)).setPosition({0,0}))
+            // render the object a second time if our room is looping
+            // and it's going over the edge of the screen
+            //TODO top left doesn't render
+            sf::Vector2i renderOffset = {0, 0};
+            while(obj->getBounds().left + _size.x * renderOffset.x < 0)
+                renderOffset.x++;
+            while(obj->getBounds().top + _size.y * renderOffset.y < 0)
+                renderOffset.y++;
+            while(obj->getBounds().left + obj->getBounds().width + _size.x * renderOffset.x > _size.x)
+                renderOffset.x--;
+            while(obj->getBounds().top + obj->getBounds().height + _size.y * renderOffset.y > _size.y)
+                renderOffset.y--;
+            if(renderOffset.x || renderOffset.y) {
+                obj->move({(float)_size.x * renderOffset.x, (float)_size.y * renderOffset.y});
+                extendedMapTexture.draw(*(itr->second));
+                obj->move({(float)_size.x * -renderOffset.x, (float)_size.y * -renderOffset.y});
+            }
+            /*if(obj->getZIndex() == 1)
+                std::cout << renderOffset.x << ", " << renderOffset.y << std::endl;*/
+            /*int offset = 0;
+            while(obj->getBounds().left + _size.x * offset < 0)
+                offset++;
+            if(offset > 0) {
+                obj->move({(float)_size.x * offset, 0});
+                extendedMapTexture.draw(*(itr->second));
+                obj->move({(float)-_size.x * offset, 0});
+            }*/
+            /*if(obj->getBounds().left < 0) {
+                obj->move({(float)_size.x,0});
+                extendedMapTexture.draw(*(itr->second));
+                obj->move({(float)-_size.x,0});
+            }
+            if(obj->getBounds().top < 0) {
+                obj->move({0,(float)_size.y});
+                extendedMapTexture.draw(*(itr->second));
+                obj->move({0,(float)-_size.y});
+            }
+            if(obj->getBounds().left + obj->getBounds().width > _size.x) {
+                obj->move({(float)-_size.x,0});
+                extendedMapTexture.draw(*(itr->second));
+                obj->move({(float)_size.x,0});
+            }
+            if(obj->getBounds().top + obj->getBounds().height > _size.y) {
+                obj->move({0,(float)-_size.y});
+                extendedMapTexture.draw(*(itr->second));
+                obj->move({0,(float)_size.y});
+            }*/
         }
         extendedMapTexture.display();
 
@@ -222,4 +334,18 @@ void OverworldState::drawState(sf::Time deltaTime)
 
 	// Displays rendered obejcts
 	this->_data->window->display();
+}
+
+bool OverworldState::isValidMove(Actor* a, Vec2i newPos) {
+    return true;
+}
+
+Entity* OverworldState::addEntity(Entity* e) {
+    _entities.push_back(e);
+    return (Entity*) addObject(e);
+}
+
+void OverworldState::removeEntity(Entity* e) {
+    removeObject(e);
+    _entities.push_back(e);
 }

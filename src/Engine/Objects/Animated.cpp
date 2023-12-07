@@ -16,7 +16,16 @@ sf::Transform Animated::getModifiedTransform() const {
 }
 
 void Animated::assignAnimation(std::string filename) {
-    player.change(man->getAnimation(filename));
+    if(filename != "")
+        player.change(man->getAnimation(filename));
+    else
+        player.stop();
+
+    lastPlayed = filename;
+}
+
+std::string Animated::getAnimation() {
+    return lastPlayed;
 }
 
 void Animated::setUVOffset(sf::Vector2i offset) {

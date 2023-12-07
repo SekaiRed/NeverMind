@@ -10,8 +10,10 @@ public:
     virtual void draw(sf::RenderTarget& rt, sf::RenderStates states) const override;
     virtual sf::Transform getModifiedTransform() const;
     virtual int getZIndex();
+    virtual void setSprite(Engine::AssetManager* man, std::string filename);
     virtual void setZIndex(int zIndex);
     virtual void setUV(int u, int v, int w, int h);
+    virtual sf::FloatRect getBounds();
 protected:
     sf::Sprite spr;
     int zIndex;

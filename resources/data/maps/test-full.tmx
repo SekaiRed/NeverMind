@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" class="OverworldMap" orientation="orthogonal" renderorder="left-down" width="30" height="30" tilewidth="32" tileheight="32" infinite="0" nextlayerid="16" nextobjectid="9">
+<map version="1.10" tiledversion="1.10.2" class="OverworldMap" orientation="orthogonal" renderorder="left-down" width="30" height="30" tilewidth="32" tileheight="32" infinite="0" nextlayerid="16" nextobjectid="9">
  <editorsettings>
   <export target="test-full..tmj" format="json"/>
  </editorsettings>
@@ -258,7 +258,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="7" name="Solid" width="30" height="30">
+ <layer id="7" name="Solid" width="30" height="30" visible="0" opacity="0">
   <data encoding="csv">
 0,0,0,0,0,0,0,2050,0,0,0,0,0,0,0,0,0,0,0,0,2050,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,2050,0,0,0,0,0,0,0,0,0,0,0,0,2050,0,0,0,0,0,0,0,0,0,
@@ -293,12 +293,12 @@
 </data>
  </layer>
  <objectgroup id="10" name="Enemies">
-  <object id="1" name="Bnuy" class="Enemy" x="608" y="448" width="32" height="32">
+  <object id="1" name="Bnuy" type="Enemy" x="608" y="448" width="32" height="32">
    <properties>
     <property name="filename" value="resources/img/sprites/characters/ENEMY_BUNNIES.png"/>
    </properties>
   </object>
-  <object id="2" name="Sprout Mole" class="Enemy" x="224" y="288" width="32" height="32">
+  <object id="2" name="Sprout Mole" type="Enemy" x="224" y="288" width="32" height="32">
    <properties>
     <property name="encounter_id" type="int" value="0"/>
     <property name="filename" value="resources/img/sprites/characters/ENEMY_MOLES.png"/>
@@ -306,7 +306,7 @@
     <property name="v" type="int" value="0"/>
    </properties>
   </object>
-  <object id="5" name="To Real World 2" class="Exit" x="448" y="448" width="32" height="32">
+  <object id="5" name="To Real World 2" type="Exit" x="448" y="448" width="32" height="32">
    <properties>
     <property name="entrance_id" type="int" value="1"/>
     <property name="map_name" value="apartment"/>
@@ -316,13 +316,13 @@
   </object>
  </objectgroup>
  <objectgroup id="11" name="Warps">
-  <object id="8" name="Entrance Portal" class="Warp" x="416" y="416" width="32" height="32">
+  <object id="8" name="Entrance Portal" type="Warp" x="416" y="416" width="32" height="32">
    <properties>
     <property name="dir" type="int" propertytype="Direction" value="0"/>
     <property name="id" type="int" value="1"/>
    </properties>
   </object>
-  <object id="3" name="Default Entrance" class="Warp" x="416" y="192" width="32" height="32">
+  <object id="3" name="Default Entrance" type="Warp" x="416" y="192" width="32" height="32">
    <properties>
     <property name="dir" type="int" propertytype="Direction" value="1"/>
     <property name="id" type="int" value="0"/>
@@ -330,7 +330,7 @@
   </object>
  </objectgroup>
  <objectgroup id="15" name="Exits">
-  <object id="4" name="To Real World 1" class="Exit" x="416" y="448" width="32" height="32">
+  <object id="4" name="To Real World 1" type="Exit" x="416" y="448" width="32" height="32">
    <properties>
     <property name="entrance_id" type="int" value="1"/>
     <property name="map_name" value="apartment"/>
@@ -338,7 +338,7 @@
     <property name="type" propertytype="ExitType" value="WalkOn"/>
    </properties>
   </object>
-  <object id="6" name="To Whitespace 1" class="Exit" x="416" y="160" width="32" height="32">
+  <object id="6" name="To Whitespace 1" type="Exit" x="416" y="160" width="32" height="32">
    <properties>
     <property name="entrance_id" type="int" value="1"/>
     <property name="map_name" value="whitespace"/>
@@ -346,7 +346,7 @@
     <property name="type" propertytype="ExitType" value="WalkOn"/>
    </properties>
   </object>
-  <object id="7" name="To Whitespace 2" class="Exit" x="448" y="160" width="32" height="32">
+  <object id="7" name="To Whitespace 2" type="Exit" x="448" y="160" width="32" height="32">
    <properties>
     <property name="entrance_id" type="int" value="1"/>
     <property name="map_name" value="whitespace"/>

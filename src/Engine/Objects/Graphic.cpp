@@ -21,6 +21,10 @@ sf::Transform Graphic::getModifiedTransform() const {
     return getTransform();
 }
 
+void Graphic::setSprite(Engine::AssetManager* man, std::string filename) {
+    spr.setTexture(man->getTexture(filename));
+}
+
 int Graphic::getZIndex() {
     return zIndex;
 }
@@ -31,4 +35,12 @@ void Graphic::setZIndex(int zIndex) {
 
 void Graphic::setUV(int u, int v, int w, int h) {
     spr.setTextureRect(sf::IntRect(u, v, w, h));
+}
+
+//left, top, width and height
+sf::FloatRect Graphic::getBounds() {
+    sf::Vector2f corner = getModifiedTransform().transformPoint(0,0);
+    sf::Vector2f size = { spr.getGlobalBounds().width, spr.getGlobalBounds().height };
+    return { corner.x, corner.y, size.x, size.y };
+    //return {}spr.getGlobalBounds();
 }

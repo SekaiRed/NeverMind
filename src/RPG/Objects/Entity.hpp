@@ -16,6 +16,11 @@ private:
     sf::Transformable overworldOffset;
     sf::Transformable overworldPosition;
     void updateTransform();
+
+protected:
+    // Animation data
+    std::string animationIdle = "OW_IDLE";
+
 public:
     Entity(Engine::AssetManager* man, std::string filename, int zIndex);
     virtual void update(sf::Time elapsed);
@@ -26,4 +31,5 @@ public:
     void setWorldSize(Vec2i size);
     Vec2i getWorldSize();
     bool isSolid();
+    void setIdleAnimation(std::string filename);
 };

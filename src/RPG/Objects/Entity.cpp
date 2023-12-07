@@ -1,11 +1,14 @@
 #include "Entity.hpp"
 
+#include <iostream>
+
 Entity::Entity(Engine::AssetManager* man, std::string filename, int zIndex) : Animated(man, filename, zIndex) {
     updateTransform();
 }
 
 void Entity::update(sf::Time elapsed) {
     overworldPosition.setPosition(sf::Vector2f(worldPos.x, worldPos.y) * static_cast<float>(TILE_SIZE));
+    //std::cout << overworldPosition
     Animated::update(elapsed);
 }
 
@@ -16,6 +19,9 @@ void Entity::updateTransform() {
 }
 
 sf::Transform Entity::getModifiedTransform() const {
+    /*std::cout << "overworldPosition " << overworldPosition.getTransform().transformPoint << std::endl;
+    std::cout << "overworldPosition " << overworldOffset << std::endl;
+    std::cout << "getModifiedTransform " << Animated::getModifiedTransform() << std::endl;*/
     return overworldPosition.getTransform() * overworldOffset.getTransform() * Animated::getModifiedTransform();
 }
 
@@ -26,6 +32,7 @@ void Entity::setUV(int u, int v, int w, int h) {
 
 void Entity::setWorldPos(Vec2i pos) {
     worldPos = pos;
+    updateTransform();
 }
 
 Vec2i Entity::getWorldPos() {
@@ -43,4 +50,8 @@ Vec2i Entity::getWorldSize() {
 
 bool Entity::isSolid() {
     return isMovementBlocking;
+}
+
+void Entity::setIdleAnimation(std::string filename) {
+    animationIdle = filename;
 }
