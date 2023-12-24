@@ -6,15 +6,22 @@ void AnimationPlayer::update(sf::Sprite& spr, sf::Transformable& transform, sf::
 
     Animation::Frame frame = animation.getFrame(index);
 
-    sf::IntRect rect = spr.getTextureRect();
-    rect.left = frame.u.value_or(rect.left) + uvOffset.x;
-    rect.top = frame.v.value_or(rect.top) + uvOffset.y;
+    // prevent the cache from being empty
+    if(cachedSpriteRect == sf::IntRect(-1,-1,-1,-1))
+        cachedSpriteRect = spr.getTextureRect();
+
+    sf::IntRect rect = cachedSpriteRect;//spr.getTextureRect();
+    //std::cout << "0 " << rect.top << std::endl;
+    rect.left = frame.u.value_or(rect.left);// + uvOffset.x;
+    rect.top = frame.v.value_or(rect.top);// + uvOffset.y;
     rect.width = frame.w.value_or(rect.width);
     rect.height = frame.h.value_or(rect.height);
-    if(animation.usesRelativeUV()) {
+    //std::cout << "1 " << rect.top << ", " << frame.v.value_or(rect.top) << ", " << uvOffset.y << std::endl;
+    /*if(animation.usesRelativeUV()) {
         rect.left *= rect.width;
         rect.top *= rect.height;
-    }
+    }*/
+    //std::cout << "2 " << rect.top << std::endl;
     if(frame.flipX.has_value()) {
         int mult = frame.flipX.value()?-1:1;
         if(rect.width < 0)
@@ -26,6 +33,14 @@ void AnimationPlayer::update(sf::Sprite& spr, sf::Transformable& transform, sf::
         if(rect.height < 0)
             mult = -mult;
         rect.height *= mult;
+    }
+    //std::cout << rect.left << ", " << rect.top << ", " << rect.width << ", " << rect.height << std::endl;
+    cachedSpriteRect = rect;
+    rect.left += uvOffset.x;
+    rect.top += uvOffset.y;
+    if(animation.usesRelativeUV()) {
+        rect.left *= rect.width;
+        rect.top *= rect.height;
     }
     spr.setTextureRect(rect);
 

@@ -10,6 +10,7 @@ private:
     Animation animation;
     int index = 0;
     bool pause = false;
+    sf::IntRect cachedSpriteRect = {-1,-1,-1,-1};
 
 public:
     //set playback percentage?

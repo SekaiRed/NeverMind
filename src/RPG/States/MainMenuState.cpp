@@ -16,7 +16,7 @@ void MainMenuState::initState()
     player_anim->setUV(0, 0, 32, 32);
 	sf::Vector2u rect = _data->window->getSize();
     player_anim->setPosition(rect.x/2 - 32/2, rect.y/2 - 32/2);
-    player_anim->assignAnimation("OW_SPIN");
+    //player_anim->assignAnimation("OW_SPIN");
     addObject(player_anim);
 	//delete player_anim;
 	//Loader::debug();

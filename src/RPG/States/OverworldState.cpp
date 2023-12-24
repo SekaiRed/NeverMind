@@ -39,79 +39,39 @@ OverworldState::OverworldState(std::string filename, GameDataRef data) :
 
 void OverworldState::initState()
 {
-    sf::View view = this->_data->window->getView();
-    //view.move(0, 256);
-    this->_data->window->setView(view);
-
-    /*Animated* face = new Animated(&this->_data->assets, "sprites/faces/sekai", 0);
-    face->setUV(0, 0, 106, 106);
-    face->setPosition(4, 16);
-    face->assignAnimation("BTL_FACE");
-    face->setUVOffset({0, 3});
-    addObject(face);
-    addObject(new Graphic(&this->_data->assets, "sprites/system/battle/player_box", 10));*/
-
-    /*player = new Graphic(&this->_data->assets, "sprites/characters/LILY", 5);
-    player->setUV(32, 0, 32, 32);
-    player->setPosition(32, 20);
-    addObject(player);*/
-
-    /*player = new Actor(&this->_data->assets, "sprites/characters/LILY", 1, this);
-    player->setWorldPos({4,4});
-    player->setUV(32, 0, 32, 32);
-    addEntity(player);*/
-    player = new Actor(&this->_data->assets, "sprites/characters/DW_PLAYGROUND_VAN", 1, this);
+    player = new Actor(&this->_data->assets, "sprites/characters/DW_AUBREY", 1, this);
     player->setWorldPos({1,1});
-    player->setWorldSize({2,2});
-    player->setUV(64, 0, 64, 64);
+    player->setIdleAnimation("OW_IDLE");
+    player->setWalkAnimation("OW_WALK");
+    player->setUV(32, 0, 32, 33);
     addEntity(player);
-    /*player = new Actor(&this->_data->assets, "sprites/characters/DW_AUBREY_RUN", 5, this);
-    player->setWorldPos({4,4});
-    //player->setUV(32, 0, 32, 33);
-    player->setIdleAnimation("OW_RUN_IDLE");
-    player->setWalkAnimation("OW_RUN");
-    player->setUV(0,0,32,33);
-    player->assignAnimation("OW_RUN_IDLE");
-    addEntity(player);*/
 
-    /*Animated* player_anim = new Animated(&this->_data->assets, "sprites/characters/DW_AUBREY", 8);
-    player_anim->setUV(0, 0, 32, 32);
-    player_anim->setPosition(128, 128);
-    player_anim->assignAnimation("OW_WALK");
-    addObject(player_anim);*/
-    /*Actor* player_anim = new Actor(&this->_data->assets, "sprites/characters/DW_AUBREY", 8, this);
-    player_anim->setWorldPos({4, 3});
-    player_anim->setUV(0, 0, 32, 32);
-    player_anim->assignAnimation("OW_WALK");
-    //addObject(player_anim);
-    addEntity(player_anim);*/
-
-
-    Animated* player_anim_run = new Animated(&this->_data->assets, "sprites/characters/DW_AUBREY_RUN", 8);
-    player_anim_run->setUV(0, 0, 32, 32);
-    player_anim_run->setPosition(128+64, 128);
+    Entity* player_anim_run = new Entity(&this->_data->assets, "sprites/characters/DW_AUBREY_RUN", 8);
+    player_anim_run->setUV(0, 0, 32, 33);
+    //player_anim_run->setPosition(128+64, 128);
+    player_anim_run->setWorldPos({6,4});
     player_anim_run->assignAnimation("OW_RUN");
-    addObject(player_anim_run);
+    addEntity(player_anim_run);
 
-    Animated* player_anim_spin = new Animated(&this->_data->assets, "sprites/characters/DW_HERO", 20);
+    /*Animated* player_anim_spin = new Animated(&this->_data->assets, "sprites/characters/DW_HERO", 20);
     player_anim_spin->setUV(32, 0, 32, 32);
     player_anim_spin->setPosition(256, 256);
     player_anim_spin->assignAnimation("DEBUG_SPIN");
     addObject(player_anim_spin);
 
-    /*Entity* big_anim = new Entity(&this->_data->assets, "sprites/characters/DW_PLAYGROUND_VAN", 4);
+    Entity* big_anim = new Entity(&this->_data->assets, "sprites/characters/DW_PLAYGROUND_VAN", 4);
     big_anim->setWorldPos({20, 8});
     big_anim->setUV(64, 0, 64, 64);
     //big_anim->setPosition(256, 256);
     big_anim->setWorldSize({1, 1});
-    addObject(big_anim);*/
+    addEntity(big_anim);
 
     Entity* lifejam_guy = new Entity(&this->_data->assets, "sprites/characters/lifejam_guy", 20);
     //lifejam_guy->setPosition(512, 512);
     lifejam_guy->setWorldPos({19, 17});
     lifejam_guy->setWorldSize({2, 2});
     lifejam_guy->assignAnimation("GEN_FLIP");
-    addObject(lifejam_guy);
+    addObject(lifejam_guy);*/
 
     /*Entity* lifejam_guy2 = new Entity(&this->_data->assets, "sprites/characters/lifejam_guy", 20, {33, 17});
     //lifejam_guy->setPosition(512, 512);
@@ -156,6 +116,10 @@ void OverworldState::updateEvents(sf::Event e)
                 player->move(Direction::RIGHT, 200);
             }*/
 
+            if (e.key.code == sf::Keyboard::A) {
+                player->assignAnimation("OW_AUBREY_SPIN");
+            }
+
             if (e.key.code == sf::Keyboard::Numpad2) {
                 v.move(0, 32);
                 this->_data->window->setView(v);
@@ -185,8 +149,13 @@ void OverworldState::updateState(sf::Time deltaTime)
 
     }*/
 
+    sf::View view = this->_data->window->getView();
+    sf::FloatRect playerRect = player->getBounds();
+    view.setCenter(playerRect.left + playerRect.width/2, playerRect.top + playerRect.height/2);
+    this->_data->window->setView(view);
+
     //sf::Time duration = _clock.restart();
-    int moveSpeed = 300; //300;
+    int moveSpeed = 100; //300;
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
         player->move(Direction::DOWN, moveSpeed);
     } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
@@ -197,7 +166,7 @@ void OverworldState::updateState(sf::Time deltaTime)
         player->move(Direction::RIGHT, moveSpeed);
     }
 
-    player->setZIndex(-player->getZIndex());
+    //player->setZIndex(-player->getZIndex());
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
         this->_data->window->setFramerateLimit(60);
@@ -337,6 +306,21 @@ void OverworldState::drawState(sf::Time deltaTime)
 }
 
 bool OverworldState::isValidMove(Actor* a, Vec2i newPos) {
+    std::vector<Entity*>::iterator ite = _entities.begin();
+    while (ite != _entities.end()) {
+        Entity* ent = (*ite);
+        for(int i=0; i < ent->getWorldSize().x * ent->getWorldSize().y; i++) {
+            for(int j=0; j < a->getWorldSize().x * a->getWorldSize().y; j++) {
+                sf::Vector2i entPos = sf::Vector2i(ent->getWorldPos().x + i % ent->getWorldSize().y, ent->getWorldPos().y + i * ent->getWorldSize().y);
+                sf::Vector2i aPos = sf::Vector2i(newPos.x + j % a->getWorldSize().y, newPos.y + j * a->getWorldSize().y);
+                //std::cout << "ent(" << entPos.x << "," << entPos.y << ")" << " " << "a(" << aPos.x << "," << aPos.y << ")" << std::endl;
+
+                if(entPos == aPos)
+                    return false;
+            }
+        }
+        ite++;
+    }
     return true;
 }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" class="OverworldMap" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="14" nextobjectid="3">
+<map version="1.10" tiledversion="1.10.2" class="OverworldMap" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="14" nextobjectid="3">
  <properties>
   <property name="music" value="bs_aquifer"/>
  </properties>
@@ -8,6 +8,7 @@
  <tileset firstgid="1061" source="../tileset/flags.tsx"/>
  <tileset firstgid="1085" source="../tileset/terrain.tsx"/>
  <tileset firstgid="2109" source="../tileset/FA_InteriorTileset2.tsx"/>
+ <tileset firstgid="3133" source="../tileset/collision.tsx"/>
  <layer id="12" name="Water" width="24" height="24">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -179,27 +180,27 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="4" name="Solid" width="24" height="24" opacity="0.33">
+ <layer id="4" name="Solid" width="24" height="24" opacity="0.56">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,1062,1062,1062,1062,1062,1062,1062,1062,1062,1062,1062,1062,1062,0,0,0,0,0,0,
-0,0,0,0,1062,0,0,0,0,0,0,0,0,0,0,0,0,0,1062,0,0,0,0,0,
-0,0,0,0,1062,0,0,0,0,0,0,0,0,0,0,0,0,0,1062,0,0,0,0,0,
-0,0,0,0,1062,0,1062,1062,1062,0,0,0,0,0,0,0,0,0,1062,0,0,0,0,0,
-0,0,0,0,1062,0,1062,0,1062,0,0,0,0,0,0,0,0,0,1062,0,0,0,0,0,
-0,0,0,0,1062,0,1062,1063,1062,0,0,0,0,0,0,0,0,0,1062,0,0,0,0,0,
-0,0,0,0,1062,0,0,0,0,0,0,0,0,0,0,0,0,0,1062,0,0,0,0,0,
-0,0,0,0,1062,0,0,0,0,0,0,0,0,0,0,0,0,0,1062,0,0,0,0,0,
-0,0,0,0,1062,0,0,0,0,0,0,0,0,0,0,0,0,0,1062,0,0,0,0,0,
-0,0,0,0,1062,0,0,0,0,0,0,0,0,0,0,0,0,0,1062,0,0,0,0,0,
-0,0,0,0,0,1062,1062,1062,0,0,0,0,0,0,0,1062,1062,1062,0,0,0,0,0,0,
-0,0,0,0,0,0,0,1062,0,0,0,0,0,0,0,1062,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,1062,0,0,0,0,0,0,0,1062,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,1062,0,0,0,0,0,0,0,1062,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,1062,1062,1062,1062,1062,1062,1062,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,3133,3133,3133,3133,3133,3133,3133,3133,3133,3133,3133,3133,3133,0,0,0,0,0,0,
+0,0,0,0,3133,0,0,0,0,0,0,0,0,0,0,0,0,0,3133,0,0,0,0,0,
+0,0,0,0,3133,0,0,0,0,0,0,0,0,0,0,0,0,0,3133,0,0,0,0,0,
+0,0,0,0,3133,0,3140,3145,3141,0,0,0,0,0,0,0,0,0,3133,0,0,0,0,0,
+0,0,0,0,3133,0,3144,0,3142,0,0,0,0,0,0,0,0,0,3133,0,0,0,0,0,
+0,0,0,0,3133,0,3139,1063,3138,0,0,0,0,0,0,0,0,0,3133,0,0,0,0,0,
+0,0,0,0,3133,0,0,0,0,0,0,0,0,0,0,0,0,0,3133,0,0,0,0,0,
+0,0,0,0,3133,0,0,0,0,0,0,0,0,0,0,0,0,0,3133,0,0,0,0,0,
+0,0,0,0,3133,0,0,0,0,0,0,0,0,0,0,0,0,0,3133,0,0,0,0,0,
+0,0,0,0,3133,0,0,0,0,0,0,0,0,0,0,0,0,0,3133,0,0,0,0,0,
+0,0,0,0,0,3133,3133,3133,0,0,0,0,0,0,0,3133,3133,3133,0,0,0,0,0,0,
+0,0,0,0,0,0,0,3133,0,0,0,0,0,0,0,3133,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,3133,0,0,0,0,0,0,0,3133,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,3133,0,0,0,0,0,0,0,3133,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,3133,3133,3133,3133,3133,3133,3133,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -235,7 +236,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <imagelayer id="8" name="Fog" class="ScrollImage" opacity="0.25" repeatx="1" repeaty="1">
+ <imagelayer id="8" name="Fog" class="ScrollImage" visible="0" opacity="0.25" repeatx="1" repeaty="1">
   <image source="../../img/overlay/fog.png" width="640" height="480"/>
   <properties>
    <property name="fixed" type="bool" value="false"/>
@@ -243,7 +244,7 @@
    <property name="scrollY" type="float" value="1"/>
   </properties>
  </imagelayer>
- <imagelayer id="9" name="Copy of Fog" class="ScrollImage" opacity="0.25" repeatx="1" repeaty="1">
+ <imagelayer id="9" name="Copy of Fog" class="ScrollImage" visible="0" opacity="0.25" repeatx="1" repeaty="1">
   <image source="../../img/overlay/fog.png" width="640" height="480"/>
   <properties>
    <property name="fixed" type="bool" value="false"/>
@@ -251,7 +252,7 @@
    <property name="scrollY" type="float" value="0.5"/>
   </properties>
  </imagelayer>
- <imagelayer id="10" name="Copy of Copy of Fog" class="ScrollImage" opacity="0.25" repeatx="1" repeaty="1">
+ <imagelayer id="10" name="Copy of Copy of Fog" class="ScrollImage" visible="0" opacity="0.25" repeatx="1" repeaty="1">
   <image source="../../img/overlay/fog.png" width="640" height="480"/>
   <properties>
    <property name="fixed" type="bool" value="false"/>
@@ -259,7 +260,7 @@
    <property name="scrollY" type="float" value="-0.75"/>
   </properties>
  </imagelayer>
- <imagelayer id="11" name="Copy of Copy of Copy of Fog" class="ScrollImage" opacity="0.25" repeatx="1" repeaty="1">
+ <imagelayer id="11" name="Copy of Copy of Copy of Fog" class="ScrollImage" visible="0" opacity="0.25" repeatx="1" repeaty="1">
   <image source="../../img/overlay/fog.png" width="640" height="480"/>
   <properties>
    <property name="fixed" type="bool" value="false"/>
@@ -268,7 +269,7 @@
   </properties>
  </imagelayer>
  <objectgroup id="7" name="Objects">
-  <object id="1" name="Default Entrance" class="Warp" x="352" y="512" width="32" height="32">
+  <object id="1" name="Default Entrance" type="Warp" x="352" y="512" width="32" height="32">
    <properties>
     <property name="dir" type="int" propertytype="Direction" value="0"/>
     <property name="id" type="int" value="0"/>

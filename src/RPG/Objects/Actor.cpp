@@ -48,17 +48,18 @@ bool Actor::move(Direction dir, sf::Int32 speed) {
         
     /*if(movingTimer != moveSpeed)
         return false;*/
+
+    facing = dir;
     
     if(!world->isValidMove(this, getWorldPos() + dir.getVector()))
         return false;
 
     setWorldPos(getWorldPos() + dir.getVector());
     
-    facing = dir;
     moveSpeed = sf::milliseconds(speed);
     movingTimer = sf::seconds(0);
     isMoving = true;
-    std::cout << getAnimation() << std::endl;
+    //std::cout << getAnimation() << std::endl;
     if(getAnimation() != animationWalk)
         assignAnimation(animationWalk);
     return true;
